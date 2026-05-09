@@ -1,39 +1,39 @@
-# Method Programming Project
+# Проект по методам программирования
 
-TCP Client/Server application developed using Qt and C++.
+TCP клиент-серверное приложение, разработанное с использованием Qt и C++.
 
-## Project Structure
+## Структура проекта
 
 - TcpServer
-  - Main Qt TCP server implementation.
+  - Основная реализация TCP-сервера на Qt.
 
 - TcpClient
-  - Main Qt TCP client implementation.
+  - Основная реализация TCP-клиента на Qt.
 
 - Algorithms
-  - Cryptography and numerical algorithms:
+  - Алгоритмы шифрования и численные методы:
     - MD5
-    - Vigenere
-    - Secant
-    - Graph
+    - Шифр Виженера
+    - Метод секущих
+    - Графовые операции
 
 - Server
-  - Older and experimental server implementations before migrating to Qt.
+  - Старые и экспериментальные реализации сервера до перехода на Qt.
 
-## Technologies Used
+## Используемые технологии
 
 - C++
 - Qt Framework
 - TCP Sockets
 - CMake
 
-## Features
+## Возможности
 
-- Client/Server communication
-- Multiple request handling
-- Encryption algorithms
-- Numerical methods
-- Graph-related operations
+- Клиент-серверное взаимодействие
+- Обработка нескольких запросов
+- Алгоритмы шифрования
+- Численные методы
+- Операции с графами
 
 ## Участники (учебная группа: 251-352)
 1. Альшебли Гассан.
