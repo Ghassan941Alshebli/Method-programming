@@ -1,3 +1,6 @@
+// This folder contains older server implementations
+// before migrating the project to Qt framework.
+
 #include <iostream>
 #include <vector>
 #include <string>
