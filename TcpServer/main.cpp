@@ -2,19 +2,41 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QDebug>
+#include <QMap>
+#include "../Algorithms/vigenere.h"
+    struct ClientInfo
+{
+    int id;
+    QString name;
+};
+
+QMap<QTcpSocket*, ClientInfo> clients;
 
 QString handleRequest(const QString& request)
 {
-    if (request == "MD5")
+    QStringList parts = request.split("|");
+    QString command = parts[0];
+
+    if (command == "MD5")
         return "MD5 function stub";
 
-    if (request == "VIGENERE")
-        return "Vigenere function stub";
+    if (command == "VIGENERE")
+    {
+        if (parts.size() == 3)
+        {
+            QString text = parts[1];
+            QString key = parts[2];
 
-    if (request == "SECANT")
+            return vigenereEncrypt(text, key);
+        }
+
+        return "Invalid Vigenere format";
+    }
+
+    if (command == "SECANT")
         return "Secant method stub";
 
-    if (request == "GRAPH")
+    if (command == "GRAPH")
         return "Graph cycle detection stub";
 
     return "Unknown request";
@@ -30,38 +52,72 @@ int main(int argc, char *argv[])
 
         QTcpSocket *client = server.nextPendingConnection();
 
-        qDebug() << "Client connected";
+        qDebug() << "New client connected";
 
         QObject::connect(client, &QTcpSocket::readyRead, [client]() {
 
-            QString request = QString::fromUtf8(client->readAll()).trimmed();
+            QString request =
+                QString::fromUtf8(client->readAll()).trimmed();
 
-            qDebug() << "Request:" << request;
+            QStringList parts = request.split("|");
 
-            QString response = handleRequest(request);
+            if(parts[0] == "REGISTER")
+            {
+                ClientInfo info;
+                info.id = parts[1].toInt();
+                info.name = parts[2];
 
-            client->write(response.toUtf8());
+                clients[client] = info;
 
+                qDebug()
+                    << "Registered client:"
+                    << "ID =" << info.id
+                    << ", Name =" << info.name;
+
+                client->write("REGISTERED");
+            }
+            else
+            {
+                ClientInfo info = clients[client];
+
+                qDebug()
+                    << "Request from client:"
+                    << "ID =" << info.id
+                    << ", Name =" << info.name
+                    << ", Request =" << parts[0];
+
+               QString response = handleRequest(request);
+
+                client->write(response.toUtf8());
+            }
         });
 
-        QObject::connect(client, &QTcpSocket::disconnected, [client]() {
+        QObject::connect(client,
+                         &QTcpSocket::disconnected,
+                         [client]() {
 
-            qDebug() << "Client disconnected";
+                             ClientInfo info = clients[client];
 
-            client->deleteLater();
+                             qDebug()
+                                 << "Client disconnected:"
+                                 << "ID =" << info.id
+                                 << ", Name =" << info.name;
 
-        });
+                             clients.remove(client);
 
+                             client->deleteLater();
+                         });
     });
 
-    if (!server.listen(QHostAddress::Any, 12345)) {
-
-        qDebug() << "Server failed";
-
-        return 1;
+    if(server.listen(QHostAddress::Any, 12345))
+    {
+        qDebug() << "Server started on port 12345";
     }
-
-    qDebug() << "Server started on port 12345";
+    else
+    {
+        qDebug() << "Server failed";
+    }
 
     return a.exec();
 }
+

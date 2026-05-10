@@ -15,9 +15,10 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Network)
 add_executable(TcpServer
   main.cpp
 )
-target_link_libraries(TcpServer PRIVATE
+target_link_libraries(TcpServer
     Qt${QT_VERSION_MAJOR}::Core
     Qt${QT_VERSION_MAJOR}::Network
+    Algorithms
 )
 
 include(GNUInstallDirs)
