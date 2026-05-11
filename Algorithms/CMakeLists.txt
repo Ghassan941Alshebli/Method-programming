@@ -6,6 +6,8 @@ add_library(Algorithms
     vigenere.h
     md5.cpp
     md5.h
+      secant.cpp
+      secant.h
 )
 
 target_link_libraries(Algorithms

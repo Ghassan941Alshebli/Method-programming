@@ -83,7 +83,18 @@ int main(int argc, char *argv[])
             request = "VIGENERE|" + text + "|" + key;
         }
         else if (choice == "3")
-            request = "SECANT";
+        {
+            string x0;
+            string x1;
+
+            cout << "Enter x0: ";
+            getline(cin, x0);
+
+            cout << "Enter x1: ";
+            getline(cin, x1);
+
+            request = "SECANT|" + x0 + "|" + x1;
+        }
         else if (choice == "4")
             request = "GRAPH";
         else

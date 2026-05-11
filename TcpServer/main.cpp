@@ -5,6 +5,7 @@
 #include <QMap>
 #include "../Algorithms/vigenere.h"
 #include "../Algorithms/md5.h"
+#include "../Algorithms/secant.h"
     struct ClientInfo
 {
     int id;
@@ -42,7 +43,19 @@ QString handleRequest(const QString& request)
     }
 
     if (command == "SECANT")
-        return "Secant method stub";
+    {
+        if (parts.size() == 3)
+        {
+            double x0 = parts[1].toDouble();
+            double x1 = parts[2].toDouble();
+
+            double result = secantMethod(x0, x1);
+
+            return QString::number(result);
+        }
+
+        return "Invalid Secant format";
+    }
 
     if (command == "GRAPH")
         return "Graph cycle detection stub";
