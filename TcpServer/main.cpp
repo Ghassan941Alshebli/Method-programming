@@ -6,6 +6,7 @@
 #include "../Algorithms/vigenere.h"
 #include "../Algorithms/md5.h"
 #include "../Algorithms/secant.h"
+#include "../Algorithms/graph.h"
     struct ClientInfo
 {
     int id;
@@ -58,7 +59,21 @@ QString handleRequest(const QString& request)
     }
 
     if (command == "GRAPH")
-        return "Graph cycle detection stub";
+    {
+        if (parts.size() == 2)
+        {
+            QString graphData = parts[1];
+
+            bool cycle = hasCycle(graphData);
+
+            if (cycle)
+                return "Cycle detected";
+
+            return "No cycle";
+        }
+
+        return "Invalid GRAPH format";
+    }
 
     return "Unknown request";
 }

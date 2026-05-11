@@ -8,6 +8,8 @@ add_library(Algorithms
     md5.h
       secant.cpp
       secant.h
+      graph.cpp
+      graph.h
 )
 
 target_link_libraries(Algorithms

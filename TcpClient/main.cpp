@@ -96,7 +96,14 @@ int main(int argc, char *argv[])
             request = "SECANT|" + x0 + "|" + x1;
         }
         else if (choice == "4")
-            request = "GRAPH";
+        {
+            string edges;
+
+            cout << "Enter graph edges: ";
+            getline(cin, edges);
+
+            request = "GRAPH|" + edges;
+        }
         else
             request = choice;
 
