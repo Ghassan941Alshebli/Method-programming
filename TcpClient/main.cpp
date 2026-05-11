@@ -60,9 +60,15 @@ int main(int argc, char *argv[])
         }
 
         string request;
-
         if (choice == "1")
-            request = "MD5";
+        {
+            string text;
+
+            cout << "Enter text: ";
+            getline(cin, text);
+
+            request = "MD5|" + text;
+        }
         else if (choice == "2")
         {
             string text;

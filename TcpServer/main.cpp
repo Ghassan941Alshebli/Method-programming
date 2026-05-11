@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QMap>
 #include "../Algorithms/vigenere.h"
+#include "../Algorithms/md5.h"
     struct ClientInfo
 {
     int id;
@@ -18,8 +19,15 @@ QString handleRequest(const QString& request)
     QString command = parts[0];
 
     if (command == "MD5")
-        return "MD5 function stub";
+    {
+        if (parts.size() == 2)
+        {
+            QString text = parts[1];
+            return generateMD5(text);
+        }
 
+        return "Invalid MD5 format";
+    }
     if (command == "VIGENERE")
     {
         if (parts.size() == 3)

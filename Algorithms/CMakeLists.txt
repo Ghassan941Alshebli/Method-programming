@@ -4,6 +4,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 add_library(Algorithms
     vigenere.cpp
     vigenere.h
+    md5.cpp
+    md5.h
 )
 
 target_link_libraries(Algorithms
