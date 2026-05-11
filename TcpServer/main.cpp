@@ -3,17 +3,21 @@
 #include <QTcpSocket>
 #include <QDebug>
 #include <QMap>
+
 #include "../Algorithms/vigenere.h"
 #include "../Algorithms/md5.h"
 #include "../Algorithms/secant.h"
 #include "../Algorithms/graph.h"
-    struct ClientInfo
+
+struct ClientInfo
 {
     int id;
     QString name;
 };
 
 QMap<QTcpSocket*, ClientInfo> clients;
+
+int nextClientId = 1;
 
 QString handleRequest(const QString& request)
 {
@@ -30,6 +34,7 @@ QString handleRequest(const QString& request)
 
         return "Invalid MD5 format";
     }
+
     if (command == "VIGENERE")
     {
         if (parts.size() == 3)
@@ -100,8 +105,9 @@ int main(int argc, char *argv[])
             if(parts[0] == "REGISTER")
             {
                 ClientInfo info;
-                info.id = parts[1].toInt();
-                info.name = parts[2];
+
+                info.id = nextClientId++;
+                info.name = parts[1];
 
                 clients[client] = info;
 
@@ -110,7 +116,10 @@ int main(int argc, char *argv[])
                     << "ID =" << info.id
                     << ", Name =" << info.name;
 
-                client->write("REGISTERED");
+                QString response =
+                    "REGISTERED|ID=" + QString::number(info.id);
+
+                client->write(response.toUtf8());
             }
             else
             {
@@ -122,7 +131,7 @@ int main(int argc, char *argv[])
                     << ", Name =" << info.name
                     << ", Request =" << parts[0];
 
-               QString response = handleRequest(request);
+                QString response = handleRequest(request);
 
                 client->write(response.toUtf8());
             }
@@ -156,4 +165,3 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
-

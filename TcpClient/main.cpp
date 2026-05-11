@@ -22,17 +22,13 @@ int main(int argc, char *argv[])
 
     cout << "Connected to server" << endl;
 
-    string id;
     string name;
-
-    cout << "Enter client id: ";
-    getline(cin, id);
 
     cout << "Enter client name: ";
     getline(cin, name);
 
     QString registerRequest =
-        "REGISTER|" + QString::fromStdString(id) + "|" + QString::fromStdString(name);
+        "REGISTER|" + QString::fromStdString(name);
 
     socket.write(registerRequest.toUtf8());
     socket.waitForBytesWritten();
