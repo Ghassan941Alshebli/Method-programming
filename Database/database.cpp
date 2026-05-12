@@ -20,7 +20,8 @@ bool initDatabase()
     QString createTable =
         "CREATE TABLE IF NOT EXISTS users ("
         "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-        "username TEXT UNIQUE NOT NULL,"
+        "username TEXT NOT NULL,"
+        "email TEXT UNIQUE NOT NULL,"
         "password TEXT NOT NULL"
         ")";
 
@@ -33,26 +34,49 @@ bool initDatabase()
     return true;
 }
 
-bool registerUser(const QString& username, const QString& password)
+bool registerUser(const QString& username,
+                  const QString& email,
+                  const QString& password)
 {
+    QSqlQuery checkQuery;
+
+    checkQuery.prepare(
+        "SELECT id FROM users WHERE email = :email");
+
+    checkQuery.bindValue(":email", email);
+
+    if (checkQuery.exec() && checkQuery.next())
+    {
+        qDebug() << "Email already exists";
+        return false;
+    }
+
     QSqlQuery query;
-    query.prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+
+    query.prepare(
+        "INSERT INTO users (username, email, password) "
+        "VALUES (:username, :email, :password)");
+
     query.bindValue(":username", username);
+    query.bindValue(":email", email);
     query.bindValue(":password", password);
 
-    if (!query.exec()) {
-        qDebug() << "Register failed:" << query.lastError().text();
+    if (!query.exec())
+    {
+        qDebug() << "Register failed:"
+                 << query.lastError().text();
+
         return false;
     }
 
     return true;
 }
 
-bool loginUser(const QString& username, const QString& password)
+bool loginUser(const QString& email, const QString& password)
 {
     QSqlQuery query;
-    query.prepare("SELECT id FROM users WHERE username = :username AND password = :password");
-    query.bindValue(":username", username);
+    query.prepare("SELECT id FROM users WHERE email = :email AND password = :password");
+    query.bindValue(":email", email);
     query.bindValue(":password", password);
 
     if (!query.exec()) {

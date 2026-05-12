@@ -27,15 +27,16 @@ QString handleRequest(const QString& request)
     QString command = parts[0];
     if (command == "REGISTER_USER")
     {
-        if (parts.size() == 3)
+        if (parts.size() == 4)
         {
             QString username = parts[1];
-            QString password = parts[2];
+            QString email = parts[2];
+            QString password = parts[3];
 
-            if (registerUser(username, password))
+            if (registerUser(username, email, password))
                 return "Registration successful";
 
-            return "Registration failed";
+            return "Email already exists";
         }
 
         return "Invalid register format";
@@ -45,13 +46,13 @@ QString handleRequest(const QString& request)
     {
         if (parts.size() == 3)
         {
-            QString username = parts[1];
+            QString email = parts[1];
             QString password = parts[2];
 
-            if (loginUser(username, password))
+            if (loginUser(email, password))
                 return "Login successful";
 
-            return "Invalid username or password";
+            return "Invalid email or password";
         }
 
         return "Invalid login format";

@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
     {
         string authChoice;
         string username;
+        string email;
         string password;
         string authRequest;
 
@@ -46,13 +47,27 @@ int main(int argc, char *argv[])
         cout << "Enter username: ";
         getline(cin, username);
 
+        cout << "Enter email: ";
+        getline(cin, email);
+
         cout << "Enter password: ";
         getline(cin, password);
 
         if (authChoice == "1")
-            authRequest = "REGISTER_USER|" + username + "|" + password;
+        {
+            authRequest =
+                "REGISTER_USER|" +
+                username + "|" +
+                email + "|" +
+                password;
+        }
         else
-            authRequest = "LOGIN|" + username + "|" + password;
+        {
+            authRequest =
+                "LOGIN|" +
+                email + "|" +
+                password;
+        }
 
         socket.write(QString::fromStdString(authRequest).toUtf8());
         socket.waitForBytesWritten();
