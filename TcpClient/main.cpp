@@ -21,23 +21,82 @@ int main(int argc, char *argv[])
     }
 
     cout << "Connected to server" << endl;
+    bool loggedIn = false;
 
-    string name;
+    while (!loggedIn)
+    {
+        string authChoice;
+        string username;
+        string password;
+        string authRequest;
 
-    cout << "Enter client name: ";
-    getline(cin, name);
+        while (true)
+        {
+            cout << "\n1. Register" << endl;
+            cout << "2. Login" << endl;
+            cout << "> ";
+            getline(cin, authChoice);
 
-    QString registerRequest =
-        "REGISTER|" + QString::fromStdString(name);
+            if (authChoice == "1" || authChoice == "2")
+                break;
 
-    socket.write(registerRequest.toUtf8());
-    socket.waitForBytesWritten();
+            cout << "Invalid choice. Please enter 1 or 2 only." << endl;
+        }
 
-    if (socket.waitForReadyRead(3000)) {
-        cout << "Server response: "
-             << socket.readAll().toStdString()
-             << endl;
+        cout << "Enter username: ";
+        getline(cin, username);
+
+        cout << "Enter password: ";
+        getline(cin, password);
+
+        if (authChoice == "1")
+            authRequest = "REGISTER_USER|" + username + "|" + password;
+        else
+            authRequest = "LOGIN|" + username + "|" + password;
+
+        socket.write(QString::fromStdString(authRequest).toUtf8());
+        socket.waitForBytesWritten();
+
+        if (socket.waitForReadyRead(3000))
+        {
+            string authResponse = socket.readAll().toStdString();
+            cout << "Server response: " << authResponse << endl;
+
+            if (authResponse == "Registration successful")
+            {
+                cout << "Account created. Please login to continue." << endl;
+            }
+            else if (authResponse == "Login successful")
+            {
+                loggedIn = true;
+            }
+            else
+            {
+                cout << "Authentication failed. Try again." << endl;
+            }
+        }
+        else
+        {
+            cout << "No response from server" << endl;
+        }
     }
+// يمكننا نقل هذه التعليمة التالية الى البدية لكن ساتركها هنا من اجل الاخال المستخدم
+
+
+    // cout << "Enter client name: ";
+    // getline(cin, name);
+
+    // QString registerRequest =
+    //     "REGISTER|" + QString::fromStdString(name);
+
+    // socket.write(registerRequest.toUtf8());
+    // socket.waitForBytesWritten();
+
+    // if (socket.waitForReadyRead(3000)) {
+    //     cout << "Server response: "
+    //          << socket.readAll().toStdString()
+    //          << endl;
+    // }
 
     while (true) {
         cout << "\nEnter request:" << endl;

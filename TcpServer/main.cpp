@@ -9,6 +9,8 @@
 #include "../Algorithms/secant.h"
 #include "../Algorithms/graph.h"
 
+#include "../Database/database.h"
+
 struct ClientInfo
 {
     int id;
@@ -23,7 +25,37 @@ QString handleRequest(const QString& request)
 {
     QStringList parts = request.split("|");
     QString command = parts[0];
+    if (command == "REGISTER_USER")
+    {
+        if (parts.size() == 3)
+        {
+            QString username = parts[1];
+            QString password = parts[2];
 
+            if (registerUser(username, password))
+                return "Registration successful";
+
+            return "Registration failed";
+        }
+
+        return "Invalid register format";
+    }
+
+    if (command == "LOGIN")
+    {
+        if (parts.size() == 3)
+        {
+            QString username = parts[1];
+            QString password = parts[2];
+
+            if (loginUser(username, password))
+                return "Login successful";
+
+            return "Invalid username or password";
+        }
+
+        return "Invalid login format";
+    }
     if (command == "MD5")
     {
         if (parts.size() == 2)
@@ -87,6 +119,12 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
+    if (!initDatabase())
+    {
+        qDebug() << "Database initialization failed";
+        return -1;
+    }
+
     QTcpServer server;
 
     QObject::connect(&server, &QTcpServer::newConnection, [&]() {
@@ -94,46 +132,38 @@ int main(int argc, char *argv[])
         QTcpSocket *client = server.nextPendingConnection();
 
         qDebug() << "New client connected";
-
         QObject::connect(client, &QTcpSocket::readyRead, [client]() {
 
-            QString request =
-                QString::fromUtf8(client->readAll()).trimmed();
-
+            QString request = QString::fromUtf8(client->readAll()).trimmed();
             QStringList parts = request.split("|");
 
-            if(parts[0] == "REGISTER")
+            ClientInfo info = clients.value(client, {0, ""});
+
+            qDebug()
+                << "Request from client:"
+                << "ID =" << info.id
+                << ", Name =" << info.name
+                << ", Request =" << parts[0];
+
+            QString response = handleRequest(request);
+
+            client->write(response.toUtf8());
+            client->flush();
+
+            if (parts[0] == "LOGIN" &&
+                response == "Login successful" &&
+                parts.size() == 3)
             {
-                ClientInfo info;
+                ClientInfo newInfo;
+                newInfo.id = nextClientId++;
+                newInfo.name = parts[1];
 
-                info.id = nextClientId++;
-                info.name = parts[1];
-
-                clients[client] = info;
+                clients[client] = newInfo;
 
                 qDebug()
-                    << "Registered client:"
-                    << "ID =" << info.id
-                    << ", Name =" << info.name;
-
-                QString response =
-                    "REGISTERED|ID=" + QString::number(info.id);
-
-                client->write(response.toUtf8());
-            }
-            else
-            {
-                ClientInfo info = clients[client];
-
-                qDebug()
-                    << "Request from client:"
-                    << "ID =" << info.id
-                    << ", Name =" << info.name
-                    << ", Request =" << parts[0];
-
-                QString response = handleRequest(request);
-
-                client->write(response.toUtf8());
+                    << "Authenticated client:"
+                    << "ID =" << newInfo.id
+                    << ", Name =" << newInfo.name;
             }
         });
 
