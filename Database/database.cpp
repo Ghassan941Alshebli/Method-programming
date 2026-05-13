@@ -86,3 +86,16 @@ bool loginUser(const QString& email, const QString& password)
 
     return query.next();
 }
+
+QString getUsernameByEmail(const QString& email)
+{
+    QSqlQuery query;
+
+    query.prepare("SELECT username FROM users WHERE email = :email");
+    query.bindValue(":email", email);
+
+    if (query.exec() && query.next())
+        return query.value(0).toString();
+
+    return "";
+}

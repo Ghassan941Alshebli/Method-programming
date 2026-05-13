@@ -14,7 +14,8 @@
 struct ClientInfo
 {
     int id;
-    QString name;
+    QString username;
+    QString email;
 };
 
 QMap<QTcpSocket*, ClientInfo> clients;
@@ -137,13 +138,13 @@ int main(int argc, char *argv[])
 
             QString request = QString::fromUtf8(client->readAll()).trimmed();
             QStringList parts = request.split("|");
-
-            ClientInfo info = clients.value(client, {0, ""});
-
+            // ppp
+            ClientInfo info = clients.value(client, {0, "", ""});
             qDebug()
                 << "Request from client:"
                 << "ID =" << info.id
-                << ", Name =" << info.name
+                << ", Username =" << info.username
+                << ", Email =" << info.email
                 << ", Request =" << parts[0];
 
             QString response = handleRequest(request);
@@ -157,14 +158,16 @@ int main(int argc, char *argv[])
             {
                 ClientInfo newInfo;
                 newInfo.id = nextClientId++;
-                newInfo.name = parts[1];
+                newInfo.email = parts[1];
+                newInfo.username = getUsernameByEmail(parts[1]);
 
                 clients[client] = newInfo;
 
                 qDebug()
                     << "Authenticated client:"
                     << "ID =" << newInfo.id
-                    << ", Name =" << newInfo.name;
+                    << ", Username =" << newInfo.username
+                    << ", Email =" << newInfo.email;
             }
         });
 
@@ -177,7 +180,8 @@ int main(int argc, char *argv[])
                              qDebug()
                                  << "Client disconnected:"
                                  << "ID =" << info.id
-                                 << ", Name =" << info.name;
+                                 << ", Username =" << info.username
+                                 << ", Email =" << info.email;
 
                              clients.remove(client);
 
