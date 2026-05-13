@@ -1,0 +1,82 @@
+\doxysection{Файл Algorithms/\+secant.cpp}
+\hypertarget{secant_8cpp}{}\label{secant_8cpp}\index{Algorithms/secant.cpp@{Algorithms/secant.cpp}}
+
+
+Реализация метода секущих для нахождения корня уравнения f(x) = x² -\/ 4.  
+
+
+{\ttfamily \+\#include "{}secant.\+h"{}}\newline
+{\ttfamily \+\#include $<$cmath$>$}\newline
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+double \doxymbox{\hyperlink{secant_8cpp_a3de2b7b41a8e4b07da05298510d17ed2}{f}} (double x)
+\begin{DoxyCompactList}\small\item\em Целевая функция для метода секущих. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{secant_8cpp_ab727c7dc9e8ed366434cbf411b901038}{secant\+Method}} (double x0, double x1)
+\begin{DoxyCompactList}\small\item\em Применяет метод секущих для нахождения корня f(x) = 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Реализация метода секущих для нахождения корня уравнения f(x) = x² -\/ 4. 
+
+
+
+\label{secant_8cpp_doc-func-members}
+\Hypertarget{secant_8cpp_doc-func-members}
+\doxysubsection{Функции}
+\Hypertarget{secant_8cpp_a3de2b7b41a8e4b07da05298510d17ed2}\index{secant.cpp@{secant.cpp}!f@{f}}
+\index{f@{f}!secant.cpp@{secant.cpp}}
+\doxysubsubsection{\texorpdfstring{f()}{f()}}
+{\footnotesize\ttfamily \label{secant_8cpp_a3de2b7b41a8e4b07da05298510d17ed2} 
+double f (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Целевая функция для метода секущих. 
+
+Вычисляет f(x) = x² -\/ 4. Корни:\+ x = ±2.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em x} & Значение аргумента. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Значение функции в точке x. 
+\end{DoxyReturn}
+\Hypertarget{secant_8cpp_ab727c7dc9e8ed366434cbf411b901038}\index{secant.cpp@{secant.cpp}!secantMethod@{secantMethod}}
+\index{secantMethod@{secantMethod}!secant.cpp@{secant.cpp}}
+\doxysubsubsection{\texorpdfstring{secantMethod()}{secantMethod()}}
+{\footnotesize\ttfamily \label{secant_8cpp_ab727c7dc9e8ed366434cbf411b901038} 
+double secant\+Method (\begin{DoxyParamCaption}\item[{double}]{x0}{, }\item[{double}]{x1}{}\end{DoxyParamCaption})}
+
+
+
+Применяет метод секущих для нахождения корня f(x) = 0. 
+
+Находит корень уравнения f(x) = 0 методом секущих.
+
+Выполняет 10 итераций по формуле:\+ x₂ = x₁ -\/ f(x₁) \texorpdfstring{$\ast$}{*} (x₁ -\/ x₀) /\+ (f(x₁) -\/ f(x₀))
+
+
+\begin{DoxyParams}{Аргументы}
+{\em x0} & Первое начальное приближение. \\
+\hline
+{\em x1} & Второе начальное приближение. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Приближённое значение корня после 10 итераций.
+\end{DoxyReturn}
+Применяет метод секущих для нахождения корня f(x) = 0.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em x0} & Первое начальное приближение. \\
+\hline
+{\em x1} & Второе начальное приближение. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Приближённое значение корня уравнения. 
+\end{DoxyReturn}

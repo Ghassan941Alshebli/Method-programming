@@ -1,0 +1,132 @@
+\doxysection{Класс Server}
+\hypertarget{class_server}{}\label{class_server}\index{Server@{Server}}
+
+
+Класс сервера, обрабатывающего текстовые команды.  
+
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_server_ad5ec9462b520e59f7ea831e157ee5e59}{Server}} ()
+\begin{DoxyCompactList}\small\item\em Инициализирует сервер и получает экземпляр базы данных. \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{class_server_a48ffdd598eb6e747b53eac565dfa83f0}{handle\+Request}} (const string \&request)
+\begin{DoxyCompactList}\small\item\em Обрабатывает входящий запрос и возвращает ответ. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_server_a9cfb5863c18b3dbeebc212abfd307480}{connect\+Client}} (int id, const string \&name)
+\begin{DoxyCompactList}\small\item\em Добавляет нового клиента в список подключённых. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_server_ae559ffb1945d4ca85e0882129c52691a}{disconnect\+Client}} (int id)
+\begin{DoxyCompactList}\small\item\em Удаляет клиента из списка по идентификатору. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_server_af2890868d6ee6ee25cde1fa64e4809fe}{show\+Clients}} ()
+\begin{DoxyCompactList}\small\item\em Выводит список всех подключённых клиентов. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_server_a41b06ea65d423e07cd4255425e64565c}{handle\+Request}} (int client\+Id, const string \&request)
+\begin{DoxyCompactList}\small\item\em Обрабатывает запрос от клиента и выводит заглушку ответа. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс сервера, обрабатывающего текстовые команды. 
+
+Управляет списком клиентов и обрабатывает их запросы.
+
+Разбирает входящие запросы вида "{}КОМАНДА\texorpdfstring{$\vert$}{|}арг1\texorpdfstring{$\vert$}{|}арг2"{} и делегирует выполнение базе данных или заглушкам алгоритмов. 
+
+\label{class_server_doc-constructors}
+\Hypertarget{class_server_doc-constructors}
+\doxysubsection{Конструктор(ы)}
+\Hypertarget{class_server_ad5ec9462b520e59f7ea831e157ee5e59}\index{Server@{Server}!Server@{Server}}
+\index{Server@{Server}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{Server()}{Server()}}
+{\footnotesize\ttfamily \label{class_server_ad5ec9462b520e59f7ea831e157ee5e59} 
+Server::\+\+Server (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Инициализирует сервер и получает экземпляр базы данных. 
+
+
+
+\label{class_server_doc-func-members}
+\Hypertarget{class_server_doc-func-members}
+\doxysubsection{Методы}
+\Hypertarget{class_server_a9cfb5863c18b3dbeebc212abfd307480}\index{Server@{Server}!connectClient@{connectClient}}
+\index{connectClient@{connectClient}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{connectClient()}{connectClient()}}
+{\footnotesize\ttfamily \label{class_server_a9cfb5863c18b3dbeebc212abfd307480} 
+void Server::\+connect\+Client (\begin{DoxyParamCaption}\item[{int}]{id}{, }\item[{const string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Добавляет нового клиента в список подключённых. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em id} & Идентификатор клиента. \\
+\hline
+{\em name} & Имя клиента. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_server_ae559ffb1945d4ca85e0882129c52691a}\index{Server@{Server}!disconnectClient@{disconnectClient}}
+\index{disconnectClient@{disconnectClient}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{disconnectClient()}{disconnectClient()}}
+{\footnotesize\ttfamily \label{class_server_ae559ffb1945d4ca85e0882129c52691a} 
+void Server::\+disconnect\+Client (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Удаляет клиента из списка по идентификатору. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em id} & Идентификатор клиента для отключения. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_server_a48ffdd598eb6e747b53eac565dfa83f0}\index{Server@{Server}!handleRequest@{handleRequest}}
+\index{handleRequest@{handleRequest}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{handleRequest()}{handleRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_server_a48ffdd598eb6e747b53eac565dfa83f0} 
+string Server::\+handle\+Request (\begin{DoxyParamCaption}\item[{const string \&}]{request}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Обрабатывает входящий запрос и возвращает ответ. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em request} & Строка запроса в формате "{}КОМАНДА\texorpdfstring{$\vert$}{|}арг1\texorpdfstring{$\vert$}{|}арг2"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Строка ответа. 
+\end{DoxyReturn}
+\Hypertarget{class_server_a41b06ea65d423e07cd4255425e64565c}\index{Server@{Server}!handleRequest@{handleRequest}}
+\index{handleRequest@{handleRequest}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{handleRequest()}{handleRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_server_a41b06ea65d423e07cd4255425e64565c} 
+void Server::\+handle\+Request (\begin{DoxyParamCaption}\item[{int}]{client\+Id}{, }\item[{const string \&}]{request}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Обрабатывает запрос от клиента и выводит заглушку ответа. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em client\+Id} & Идентификатор клиента. \\
+\hline
+{\em request} & Строка запроса (MD5, VIGENERE, SECANT, GRAPH). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_server_af2890868d6ee6ee25cde1fa64e4809fe}\index{Server@{Server}!showClients@{showClients}}
+\index{showClients@{showClients}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{showClients()}{showClients()}}
+{\footnotesize\ttfamily \label{class_server_af2890868d6ee6ee25cde1fa64e4809fe} 
+void Server::\+show\+Clients (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Выводит список всех подключённых клиентов. 
+
+
+
+Объявления и описания членов классов находятся в файлах:\+\begin{DoxyCompactItemize}
+\item 
+Server/\+\doxymbox{\hyperlink{_full___server_8cpp}{Full\+\_\+\+Server.\+cpp}}\item 
+Server/\+\doxymbox{\hyperlink{_multi___client___server_8cpp}{Multi\+\_\+\+Client\+\_\+\+Server.\+cpp}}\end{DoxyCompactItemize}

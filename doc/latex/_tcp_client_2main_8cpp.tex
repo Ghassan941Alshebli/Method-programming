@@ -1,0 +1,48 @@
+\doxysection{Файл Tcp\+Client/\+main.cpp}
+\hypertarget{_tcp_client_2main_8cpp}{}\label{_tcp_client_2main_8cpp}\index{TcpClient/main.cpp@{TcpClient/main.cpp}}
+
+
+Точка входа TCP-\/клиента с консольным интерфейсом.  
+
+
+{\ttfamily \+\#include $<$QCore\+Application$>$}\newline
+{\ttfamily \+\#include $<$QTcp\+Socket$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{_tcp_client_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\+[$\,$]\+)
+\begin{DoxyCompactList}\small\item\em Точка входа клиентского приложения. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Точка входа TCP-\/клиента с консольным интерфейсом. 
+
+Клиент подключается к серверу на 127.\+0.\+0.\+1:\+12345, выполняет аутентификацию (регистрацию или вход), затем позволяет отправлять запросы к алгоритмам:\+ MD5, Vigenere, Secant, Graph. 
+
+\label{_tcp_client_2main_8cpp_doc-func-members}
+\Hypertarget{_tcp_client_2main_8cpp_doc-func-members}
+\doxysubsection{Функции}
+\Hypertarget{_tcp_client_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_tcp_client_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\+[$\,$]\+}\end{DoxyParamCaption})}
+
+
+
+Точка входа клиентского приложения. 
+
+Устанавливает соединение с сервером, проводит этап аутентификации, после чего в цикле принимает команды пользователя и отправляет запросы на сервер.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em argc} & Количество аргументов командной строки. \\
+\hline
+{\em argv} & Массив аргументов командной строки. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Код завершения приложения. 
+\end{DoxyReturn}

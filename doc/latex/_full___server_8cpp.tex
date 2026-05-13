@@ -1,0 +1,66 @@
+\doxysection{Файл Server/\+\+Full\+\_\+\+Server.cpp}
+\hypertarget{_full___server_8cpp}{}\label{_full___server_8cpp}\index{Server/Full\_Server.cpp@{Server/Full\_Server.cpp}}
+
+
+Прототип полного сервера с базой данных и обработчиком команд.  
+
+
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$sstream$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$map$>$}\newline
+\doxysubsubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_database}{Database}}
+\begin{DoxyCompactList}\small\item\em Класс базы данных пользователей, реализованный как Singleton. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_server}{Server}}
+\begin{DoxyCompactList}\small\item\em Класс сервера, обрабатывающего текстовые команды. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ string $>$ \doxymbox{\hyperlink{_full___server_8cpp_ab2152a3adf2fbd7315536b5e5e77e286}{split}} (const string \&str, char delimiter)
+\begin{DoxyCompactList}\small\item\em Разбивает строку по разделителю на вектор подстрок. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{_full___server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Точка входа тестовой программы сервера. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Прототип полного сервера с базой данных и обработчиком команд. 
+
+Ранняя реализация сервера до перехода на Qt. Включает Singleton-\/базу данных, парсер команд и заглушки алгоритмов. 
+
+\label{_full___server_8cpp_doc-func-members}
+\Hypertarget{_full___server_8cpp_doc-func-members}
+\doxysubsection{Функции}
+\Hypertarget{_full___server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{Full\_Server.cpp@{Full\_Server.cpp}!main@{main}}
+\index{main@{main}!Full\_Server.cpp@{Full\_Server.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_full___server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Точка входа тестовой программы сервера. 
+
+В цикле считывает запросы с консоли и выводит ответы сервера. \Hypertarget{_full___server_8cpp_ab2152a3adf2fbd7315536b5e5e77e286}\index{Full\_Server.cpp@{Full\_Server.cpp}!split@{split}}
+\index{split@{split}!Full\_Server.cpp@{Full\_Server.cpp}}
+\doxysubsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily \label{_full___server_8cpp_ab2152a3adf2fbd7315536b5e5e77e286} 
+vector$<$ string $>$ split (\begin{DoxyParamCaption}\item[{const string \&}]{str}{, }\item[{char}]{delimiter}{}\end{DoxyParamCaption})}
+
+
+
+Разбивает строку по разделителю на вектор подстрок. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em str} & Входная строка. \\
+\hline
+{\em delimiter} & Символ-\/разделитель. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вектор подстрок. 
+\end{DoxyReturn}

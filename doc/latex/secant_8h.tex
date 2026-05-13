@@ -1,0 +1,58 @@
+\doxysection{Файл Algorithms/\+secant.h}
+\hypertarget{secant_8h}{}\label{secant_8h}\index{Algorithms/secant.h@{Algorithms/secant.h}}
+
+
+Объявление функции численного метода секущих.  
+
+
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+double \doxymbox{\hyperlink{secant_8h_ab727c7dc9e8ed366434cbf411b901038}{secant\+Method}} (double x0, double x1)
+\begin{DoxyCompactList}\small\item\em Находит корень уравнения f(x) = 0 методом секущих. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Объявление функции численного метода секущих. 
+
+
+
+\label{secant_8h_doc-func-members}
+\Hypertarget{secant_8h_doc-func-members}
+\doxysubsection{Функции}
+\Hypertarget{secant_8h_ab727c7dc9e8ed366434cbf411b901038}\index{secant.h@{secant.h}!secantMethod@{secantMethod}}
+\index{secantMethod@{secantMethod}!secant.h@{secant.h}}
+\doxysubsubsection{\texorpdfstring{secantMethod()}{secantMethod()}}
+{\footnotesize\ttfamily \label{secant_8h_ab727c7dc9e8ed366434cbf411b901038} 
+double secant\+Method (\begin{DoxyParamCaption}\item[{double}]{x0}{, }\item[{double}]{x1}{}\end{DoxyParamCaption})}
+
+
+
+Находит корень уравнения f(x) = 0 методом секущих. 
+
+Применяет метод секущих для нахождения корня f(x) = 0.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em x0} & Первое начальное приближение. \\
+\hline
+{\em x1} & Второе начальное приближение. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Приближённое значение корня уравнения.
+\end{DoxyReturn}
+Находит корень уравнения f(x) = 0 методом секущих.
+
+Выполняет 10 итераций по формуле:\+ x₂ = x₁ -\/ f(x₁) \texorpdfstring{$\ast$}{*} (x₁ -\/ x₀) /\+ (f(x₁) -\/ f(x₀))
+
+
+\begin{DoxyParams}{Аргументы}
+{\em x0} & Первое начальное приближение. \\
+\hline
+{\em x1} & Второе начальное приближение. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Приближённое значение корня после 10 итераций. 
+\end{DoxyReturn}

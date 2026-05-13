@@ -1,0 +1,43 @@
+\doxysection{Файл Server/\+\+Multi\+\_\+\+Client\+\_\+\+Server.cpp}
+\hypertarget{_multi___client___server_8cpp}{}\label{_multi___client___server_8cpp}\index{Server/Multi\_Client\_Server.cpp@{Server/Multi\_Client\_Server.cpp}}
+
+
+Прототип сервера с поддержкой нескольких клиентов (без сети).  
+
+
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+\doxysubsubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_client}{Client}}
+\begin{DoxyCompactList}\small\item\em Представляет клиента, подключённого к серверу. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_server}{Server}}
+\begin{DoxyCompactList}\small\item\em Класс сервера, обрабатывающего текстовые команды. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{_multi___client___server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Точка входа симулятора многоклиентского сервера. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Прототип сервера с поддержкой нескольких клиентов (без сети). 
+
+Ранняя реализация до перехода на Qt. Симулирует подключение, отключение клиентов и обработку запросов через консольное меню. 
+
+\label{_multi___client___server_8cpp_doc-func-members}
+\Hypertarget{_multi___client___server_8cpp_doc-func-members}
+\doxysubsection{Функции}
+\Hypertarget{_multi___client___server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{Multi\_Client\_Server.cpp@{Multi\_Client\_Server.cpp}!main@{main}}
+\index{main@{main}!Multi\_Client\_Server.cpp@{Multi\_Client\_Server.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_multi___client___server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Точка входа симулятора многоклиентского сервера. 
+
+Предоставляет консольное меню для подключения/\+отключения клиентов и отправки тестовых запросов. 

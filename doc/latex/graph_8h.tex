@@ -1,0 +1,55 @@
+\doxysection{Файл Algorithms/\+graph.h}
+\hypertarget{graph_8h}{}\label{graph_8h}\index{Algorithms/graph.h@{Algorithms/graph.h}}
+
+
+Объявление функции для обнаружения циклов в графе.  
+
+
+{\ttfamily \+\#include $<$QString$>$}\newline
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{graph_8h_a9c4cf1b62c3724c9b05e7876aed6f484}{has\+Cycle}} (const QString \&graph\+Data)
+\begin{DoxyCompactList}\small\item\em Проверяет наличие цикла в неориентированном графе. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Объявление функции для обнаружения циклов в графе. 
+
+
+
+\label{graph_8h_doc-func-members}
+\Hypertarget{graph_8h_doc-func-members}
+\doxysubsection{Функции}
+\Hypertarget{graph_8h_a9c4cf1b62c3724c9b05e7876aed6f484}\index{graph.h@{graph.h}!hasCycle@{hasCycle}}
+\index{hasCycle@{hasCycle}!graph.h@{graph.h}}
+\doxysubsubsection{\texorpdfstring{hasCycle()}{hasCycle()}}
+{\footnotesize\ttfamily \label{graph_8h_a9c4cf1b62c3724c9b05e7876aed6f484} 
+bool has\+Cycle (\begin{DoxyParamCaption}\item[{const QString \&}]{graph\+Data}{}\end{DoxyParamCaption})}
+
+
+
+Проверяет наличие цикла в неориентированном графе. 
+
+Разбирает строку рёбер и проверяет граф на наличие цикла.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em graph\+Data} & Строка рёбер графа в формате "{}\+A-\/\+B,\+B-\/\+C,\+C-\/\+A"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true — если цикл обнаружен, false — если граф ацикличен.
+\end{DoxyReturn}
+Проверяет наличие цикла в неориентированном графе.
+
+Строит список смежности из строки вида "{}\+A-\/\+B,\+B-\/\+C,\+C-\/\+A"{}, затем запускает DFS для каждого непосещённого узла.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em graph\+Data} & Строка рёбер графа в формате "{}узел1-\/узел2,узел3-\/узел4,..."{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true — если цикл обнаружен, false — если граф ацикличен. 
+\end{DoxyReturn}

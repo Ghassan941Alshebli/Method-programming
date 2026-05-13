@@ -1,0 +1,56 @@
+\doxysection{Файл Algorithms/\+md5.cpp}
+\hypertarget{md5_8cpp}{}\label{md5_8cpp}\index{Algorithms/md5.cpp@{Algorithms/md5.cpp}}
+
+
+Реализация генерации MD5-\/хэша с использованием Qt.  
+
+
+{\ttfamily \+\#include "{}md5.\+h"{}}\newline
+{\ttfamily \+\#include $<$QCryptographic\+Hash$>$}\newline
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+QString \doxymbox{\hyperlink{md5_8cpp_abad5c253c3d7954bee44db9f07d0c24c}{generate\+MD5}} (const QString \&text)
+\begin{DoxyCompactList}\small\item\em Вычисляет MD5-\/хэш входной строки. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Реализация генерации MD5-\/хэша с использованием Qt. 
+
+
+
+\label{md5_8cpp_doc-func-members}
+\Hypertarget{md5_8cpp_doc-func-members}
+\doxysubsection{Функции}
+\Hypertarget{md5_8cpp_abad5c253c3d7954bee44db9f07d0c24c}\index{md5.cpp@{md5.cpp}!generateMD5@{generateMD5}}
+\index{generateMD5@{generateMD5}!md5.cpp@{md5.cpp}}
+\doxysubsubsection{\texorpdfstring{generateMD5()}{generateMD5()}}
+{\footnotesize\ttfamily \label{md5_8cpp_abad5c253c3d7954bee44db9f07d0c24c} 
+QString generate\+MD5 (\begin{DoxyParamCaption}\item[{const QString \&}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Вычисляет MD5-\/хэш входной строки. 
+
+Генерирует MD5-\/хэш для переданной строки.
+
+Преобразует строку в UTF-\/8, применяет алгоритм MD5 через QCryptographic\+Hash и возвращает результат в hex-\/формате.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em text} & Входная строка. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+MD5-\/хэш в виде шестнадцатеричной строки.
+\end{DoxyReturn}
+Вычисляет MD5-\/хэш входной строки.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em text} & Входная строка для хэширования. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Строка с MD5-\/хэшем в шестнадцатеричном формате. 
+\end{DoxyReturn}

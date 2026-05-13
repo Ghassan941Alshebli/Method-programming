@@ -1,0 +1,59 @@
+\doxysection{Файл Algorithms/\+vigenere.cpp}
+\hypertarget{vigenere_8cpp}{}\label{vigenere_8cpp}\index{Algorithms/vigenere.cpp@{Algorithms/vigenere.cpp}}
+
+
+Реализация шифра Виженера для шифрования текста.  
+
+
+{\ttfamily \+\#include "{}vigenere.\+h"{}}\newline
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+QString \doxymbox{\hyperlink{vigenere_8cpp_a2424c7c3aff0af1f857a2f3e92deebe5}{vigenere\+Encrypt}} (const QString \&text, const QString \&key)
+\begin{DoxyCompactList}\small\item\em Шифрует строку методом Виженера. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Реализация шифра Виженера для шифрования текста. 
+
+
+
+\label{vigenere_8cpp_doc-func-members}
+\Hypertarget{vigenere_8cpp_doc-func-members}
+\doxysubsection{Функции}
+\Hypertarget{vigenere_8cpp_a2424c7c3aff0af1f857a2f3e92deebe5}\index{vigenere.cpp@{vigenere.cpp}!vigenereEncrypt@{vigenereEncrypt}}
+\index{vigenereEncrypt@{vigenereEncrypt}!vigenere.cpp@{vigenere.cpp}}
+\doxysubsubsection{\texorpdfstring{vigenereEncrypt()}{vigenereEncrypt()}}
+{\footnotesize\ttfamily \label{vigenere_8cpp_a2424c7c3aff0af1f857a2f3e92deebe5} 
+QString vigenere\+Encrypt (\begin{DoxyParamCaption}\item[{const QString \&}]{text}{, }\item[{const QString \&}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Шифрует строку методом Виженера. 
+
+Шифрует текст с использованием шифра Виженера.
+
+Обрабатывает только буквенные символы. Небуквенные символы переносятся в результат без изменений. Ключ применяется циклически. Результат возвращается в верхнем регистре.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em text} & Входная строка для шифрования. \\
+\hline
+{\em key} & Ключевое слово шифрования. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Зашифрованная строка.
+\end{DoxyReturn}
+Шифрует строку методом Виженера.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em text} & Открытый текст для шифрования. \\
+\hline
+{\em key} & Ключ шифрования (строка из букв). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Зашифрованная строка в верхнем регистре. 
+\end{DoxyReturn}
