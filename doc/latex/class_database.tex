@@ -1,11 +1,11 @@
-\doxysection{Класс Database}
+\doxysection{Database Class Reference}
 \hypertarget{class_database}{}\label{class_database}\index{Database@{Database}}
 
 
 Класс базы данных пользователей, реализованный как Singleton.  
 
 
-\doxysubsubsection*{Открытые члены}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \doxymbox{\hyperlink{class_database_a5de0749a050273fbf346a84ff09da4e1}{add\+User}} (const string \&username)
@@ -16,7 +16,7 @@ bool \doxymbox{\hyperlink{class_database_afe3972cf8aa580a4bca07f966e8f9247}{regi
 \begin{DoxyCompactList}\small\item\em Регистрирует нового пользователя. \end{DoxyCompactList}\item 
 bool \doxymbox{\hyperlink{class_database_a3014875761c15d3a5b24717c707bcb85}{login\+User}} (const string \&username, const string \&password)
 \begin{DoxyCompactList}\small\item\em Проверяет учётные данные пользователя. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Открытые статические члены}
+\doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \doxymbox{\hyperlink{class_database}{Database}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_database_ae5a1904f34c6a6c34d5ce932bd33dd19}{get\+Instance}} ()
@@ -25,7 +25,7 @@ static \doxymbox{\hyperlink{class_database}{Database}} \texorpdfstring{$\ast$}{*
 \begin{DoxyCompactList}\small\item\em Возвращает единственный экземпляр \doxylink{class_database}{Database}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Подробное описание}
+\doxysubsection{Detailed Description}
 Класс базы данных пользователей, реализованный как Singleton. 
 
 Singleton-\/класс для хранения пользователей в памяти.
@@ -36,7 +36,7 @@ Singleton-\/класс для хранения пользователей в п�
 
 \label{class_database_doc-func-members}
 \Hypertarget{class_database_doc-func-members}
-\doxysubsection{Методы}
+\doxysubsection{Member Function Documentation}
 \Hypertarget{class_database_a5de0749a050273fbf346a84ff09da4e1}\index{Database@{Database}!addUser@{addUser}}
 \index{addUser@{addUser}!Database@{Database}}
 \doxysubsubsection{\texorpdfstring{addUser()}{addUser()}}
@@ -48,7 +48,7 @@ void Database::\+add\+User (\begin{DoxyParamCaption}\item[{const string \&}]{use
 Добавляет нового пользователя в список. 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em username} & Имя пользователя для добавления. \\
 \hline
 \end{DoxyParams}
@@ -62,7 +62,7 @@ void Database::\+add\+User (\begin{DoxyParamCaption}\item[{const string \&}]{use
 
 Возвращает единственный экземпляр \doxylink{class_database}{Database}. 
 
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Указатель на глобальный экземпляр \doxylink{class_database}{Database}. 
 \end{DoxyReturn}
 \Hypertarget{class_database_ae5a1904f34c6a6c34d5ce932bd33dd19}\index{Database@{Database}!getInstance@{getInstance}}
@@ -75,7 +75,7 @@ void Database::\+add\+User (\begin{DoxyParamCaption}\item[{const string \&}]{use
 
 Возвращает единственный экземпляр \doxylink{class_database}{Database}. 
 
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Указатель на глобальный экземпляр. 
 \end{DoxyReturn}
 \Hypertarget{class_database_ac54879856fd5a9d2557b128555bd2f1c}\index{Database@{Database}!getUsers@{getUsers}}
@@ -88,7 +88,7 @@ vector$<$ string $>$ Database::\+get\+Users (\begin{DoxyParamCaption}{}{}\end{Do
 
 Возвращает список всех пользователей. 
 
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Вектор строк с именами пользователей. 
 \end{DoxyReturn}
 \Hypertarget{class_database_a3014875761c15d3a5b24717c707bcb85}\index{Database@{Database}!loginUser@{loginUser}}
@@ -102,13 +102,13 @@ bool Database::\+login\+User (\begin{DoxyParamCaption}\item[{const string \&}]{u
 Проверяет учётные данные пользователя. 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em username} & Имя пользователя. \\
 \hline
 {\em password} & Пароль. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если данные верны, false — в противном случае. 
 \end{DoxyReturn}
 \Hypertarget{class_database_afe3972cf8aa580a4bca07f966e8f9247}\index{Database@{Database}!registerUser@{registerUser}}
@@ -122,18 +122,18 @@ bool Database::\+register\+User (\begin{DoxyParamCaption}\item[{const string \&}
 Регистрирует нового пользователя. 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em username} & Имя пользователя. \\
 \hline
 {\em password} & Пароль. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если регистрация успешна, false — если имя уже занято. 
 \end{DoxyReturn}
 
 
-Объявления и описания членов классов находятся в файлах:\+\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
 \item 
 Server/\+\doxymbox{\hyperlink{_databases_8cpp}{Databases.\+cpp}}\item 
 Server/\+\doxymbox{\hyperlink{_full___server_8cpp}{Full\+\_\+\+Server.\+cpp}}\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
-\doxysection{Файл Algorithms/\+graph.cpp}
+\doxysection{Algorithms/\+graph.cpp File Reference}
 \hypertarget{graph_8cpp}{}\label{graph_8cpp}\index{Algorithms/graph.cpp@{Algorithms/graph.cpp}}
 
 
@@ -9,7 +9,7 @@
 {\ttfamily \+\#include $<$QMap$>$}\newline
 {\ttfamily \+\#include $<$QSet$>$}\newline
 {\ttfamily \+\#include $<$QString\+List$>$}\newline
-\doxysubsubsection*{Функции}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 bool \doxymbox{\hyperlink{graph_8cpp_a5c8e32ce930444dbe4e670c369fca9f9}{dfs}} (const QString \&node, const QString \&parent, QMap$<$ QString, QList$<$ QString $>$ $>$ \&graph, QSet$<$ QString $>$ \&visited)
@@ -18,14 +18,14 @@ bool \doxymbox{\hyperlink{graph_8cpp_a9c4cf1b62c3724c9b05e7876aed6f484}{has\+Cyc
 \begin{DoxyCompactList}\small\item\em Разбирает строку рёбер и проверяет граф на наличие цикла. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Подробное описание}
+\doxysubsection{Detailed Description}
 Реализация обнаружения циклов в неориентированном графе с помощью обхода в глубину (DFS). 
 
 
 
 \label{graph_8cpp_doc-func-members}
 \Hypertarget{graph_8cpp_doc-func-members}
-\doxysubsection{Функции}
+\doxysubsection{Function Documentation}
 \Hypertarget{graph_8cpp_a5c8e32ce930444dbe4e670c369fca9f9}\index{graph.cpp@{graph.cpp}!dfs@{dfs}}
 \index{dfs@{dfs}!graph.cpp@{graph.cpp}}
 \doxysubsubsection{\texorpdfstring{dfs()}{dfs()}}
@@ -39,7 +39,7 @@ bool dfs (\begin{DoxyParamCaption}\item[{const QString \&}]{node}{, }\item[{cons
 Обходит граф начиная с узла {\ttfamily node}, отслеживая посещённые узлы. Если обнаруживается уже посещённый сосед (не родительский узел) — найден цикл.
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em node} & Текущий обрабатываемый узел. \\
 \hline
 {\em parent} & Родительский узел (чтобы не возвращаться назад). \\
@@ -49,7 +49,7 @@ bool dfs (\begin{DoxyParamCaption}\item[{const QString \&}]{node}{, }\item[{cons
 {\em visited} & Множество уже посещённых узлов. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если цикл найден, false — если нет. 
 \end{DoxyReturn}
 \Hypertarget{graph_8cpp_a9c4cf1b62c3724c9b05e7876aed6f484}\index{graph.cpp@{graph.cpp}!hasCycle@{hasCycle}}
@@ -67,20 +67,20 @@ bool has\+Cycle (\begin{DoxyParamCaption}\item[{const QString \&}]{graph\+Data}{
 Строит список смежности из строки вида "{}\+A-\/\+B,\+B-\/\+C,\+C-\/\+A"{}, затем запускает DFS для каждого непосещённого узла.
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em graph\+Data} & Строка рёбер графа в формате "{}узел1-\/узел2,узел3-\/узел4,..."{}. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если цикл обнаружен, false — если граф ацикличен.
 \end{DoxyReturn}
 Разбирает строку рёбер и проверяет граф на наличие цикла.
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em graph\+Data} & Строка рёбер графа в формате "{}\+A-\/\+B,\+B-\/\+C,\+C-\/\+A"{}. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если цикл обнаружен, false — если граф ацикличен. 
 \end{DoxyReturn}

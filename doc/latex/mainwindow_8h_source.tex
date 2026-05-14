@@ -1,0 +1,70 @@
+\doxysection{mainwindow.\+h}
+\hypertarget{mainwindow_8h_source}{}\label{mainwindow_8h_source}\index{TcpClient/mainwindow.h@{TcpClient/mainwindow.h}}
+\doxymbox{\hyperlink{mainwindow_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QTcpSocket>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QStackedWidget>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QLineEdit>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QTextEdit>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QComboBox>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{tcpclientsingleton_8h}{tcpclientsingleton.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}(QWidget*\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \ \ \doxymbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{\string~MainWindow}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ onRegisterClicked();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ onLoginClicked();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ onSendClicked();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ onRequestTypeChanged(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ onReadyRead();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ onDisconnected();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ setupLoginPage();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ setupMainPage();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ showLoginPage();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ showMainPage();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ sendToServer(\textcolor{keyword}{const}\ QString\&\ message);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \doxymbox{\hyperlink{class_tcp_client_singleton}{TcpClientSingleton}}*\ client;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ QStackedWidget*\ stackedWidget;\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ QLineEdit*\ usernameEdit;\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ QLineEdit*\ emailEdit;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ QLineEdit*\ passwordEdit;\ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ QLabel*\ authStatusLabel;\ \ \ \ \ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ QComboBox*\ requestTypeCombo;\ }
+\DoxyCodeLine{00085\ \ \ \ \ QLineEdit*\ input1Edit;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ QLineEdit*\ input2Edit;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ QLabel*\ input1Label;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ QLabel*\ input2Label;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ QTextEdit*\ responseEdit;\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ QLabel*\ welcomeLabel;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

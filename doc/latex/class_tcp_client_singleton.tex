@@ -1,0 +1,155 @@
+\doxysection{Tcp\+Client\+Singleton Class Reference}
+\hypertarget{class_tcp_client_singleton}{}\label{class_tcp_client_singleton}\index{TcpClientSingleton@{TcpClientSingleton}}
+
+
+Singleton-\/класс для управления TCP-\/подключением к серверу.  
+
+
+
+
+{\ttfamily \+\#include $<$tcpclientsingleton.\+h$>$}
+
+Inheritance diagram for Tcp\+Client\+Singleton:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_tcp_client_singleton}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{class_tcp_client_singleton_a6964918cb5e64f9ea83b55c032aeb6df}{connect\+To\+Server}} (const QString \&host, int port)
+\begin{DoxyCompactList}\small\item\em Подключается к серверу. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_tcp_client_singleton_a1451bb2ca1a526a3864530d735f957c2}{send\+Message}} (const QString \&message)
+\begin{DoxyCompactList}\small\item\em Отправляет сообщение на сервер. \end{DoxyCompactList}\item 
+QTcp\+Socket \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_tcp_client_singleton_ae1397c6c662711e738dd3637211d3a38}{get\+Socket}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает указатель на сокет. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_tcp_client_singleton_ab5dda28050b19ff635b02058d36040e1}{is\+Connected}} () const
+\begin{DoxyCompactList}\small\item\em Проверяет активность подключения. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_tcp_client_singleton}{Tcp\+Client\+Singleton}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_tcp_client_singleton_a711becdcc550fa01c65d776883b6457c}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает единственный экземпляр \doxylink{class_tcp_client_singleton}{Tcp\+Client\+Singleton}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton-\/класс для управления TCP-\/подключением к серверу. 
+
+Гарантирует единственное подключение к серверу на протяжении всего времени работы приложения. 
+
+\label{class_tcp_client_singleton_doc-func-members}
+\Hypertarget{class_tcp_client_singleton_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_tcp_client_singleton_a6964918cb5e64f9ea83b55c032aeb6df}\index{TcpClientSingleton@{TcpClientSingleton}!connectToServer@{connectToServer}}
+\index{connectToServer@{connectToServer}!TcpClientSingleton@{TcpClientSingleton}}
+\doxysubsubsection{\texorpdfstring{connectToServer()}{connectToServer()}}
+{\footnotesize\ttfamily \label{class_tcp_client_singleton_a6964918cb5e64f9ea83b55c032aeb6df} 
+bool Tcp\+Client\+Singleton::\+connect\+To\+Server (\begin{DoxyParamCaption}\item[{const QString \&}]{host}{, }\item[{int}]{port}{}\end{DoxyParamCaption})}
+
+
+
+Подключается к серверу. 
+
+Подключается к серверу по указанному адресу и порту.
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & Адрес сервера. \\
+\hline
+{\em port} & Порт сервера. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true — если подключение успешно.
+\end{DoxyReturn}
+Если уже подключён — повторное подключение не выполняется.
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & Адрес сервера. \\
+\hline
+{\em port} & Порт сервера. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true — если подключение успешно, false — в случае ошибки. 
+\end{DoxyReturn}
+\Hypertarget{class_tcp_client_singleton_a711becdcc550fa01c65d776883b6457c}\index{TcpClientSingleton@{TcpClientSingleton}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!TcpClientSingleton@{TcpClientSingleton}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_tcp_client_singleton_a711becdcc550fa01c65d776883b6457c} 
+\doxymbox{\hyperlink{class_tcp_client_singleton}{Tcp\+Client\+Singleton}} \texorpdfstring{$\ast$}{*} Tcp\+Client\+Singleton::\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Возвращает единственный экземпляр \doxylink{class_tcp_client_singleton}{Tcp\+Client\+Singleton}. 
+
+\begin{DoxyReturn}{Returns}
+Указатель на глобальный экземпляр.
+\end{DoxyReturn}
+Если экземпляр ещё не создан — создаёт его.
+
+\begin{DoxyReturn}{Returns}
+Указатель на глобальный экземпляр. 
+\end{DoxyReturn}
+\Hypertarget{class_tcp_client_singleton_ae1397c6c662711e738dd3637211d3a38}\index{TcpClientSingleton@{TcpClientSingleton}!getSocket@{getSocket}}
+\index{getSocket@{getSocket}!TcpClientSingleton@{TcpClientSingleton}}
+\doxysubsubsection{\texorpdfstring{getSocket()}{getSocket()}}
+{\footnotesize\ttfamily \label{class_tcp_client_singleton_ae1397c6c662711e738dd3637211d3a38} 
+QTcp\+Socket \texorpdfstring{$\ast$}{*} Tcp\+Client\+Singleton::\+get\+Socket (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Возвращает указатель на сокет. 
+
+Возвращает указатель на внутренний сокет.
+
+\begin{DoxyReturn}{Returns}
+Указатель на QTcp\+Socket. 
+\end{DoxyReturn}
+\Hypertarget{class_tcp_client_singleton_ab5dda28050b19ff635b02058d36040e1}\index{TcpClientSingleton@{TcpClientSingleton}!isConnected@{isConnected}}
+\index{isConnected@{isConnected}!TcpClientSingleton@{TcpClientSingleton}}
+\doxysubsubsection{\texorpdfstring{isConnected()}{isConnected()}}
+{\footnotesize\ttfamily \label{class_tcp_client_singleton_ab5dda28050b19ff635b02058d36040e1} 
+bool Tcp\+Client\+Singleton::\+is\+Connected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Проверяет активность подключения. 
+
+Проверяет, активно ли подключение к серверу.
+
+\begin{DoxyReturn}{Returns}
+true — если подключён к серверу.
+
+true — если сокет в состоянии Connected\+State. 
+\end{DoxyReturn}
+\Hypertarget{class_tcp_client_singleton_a1451bb2ca1a526a3864530d735f957c2}\index{TcpClientSingleton@{TcpClientSingleton}!sendMessage@{sendMessage}}
+\index{sendMessage@{sendMessage}!TcpClientSingleton@{TcpClientSingleton}}
+\doxysubsubsection{\texorpdfstring{sendMessage()}{sendMessage()}}
+{\footnotesize\ttfamily \label{class_tcp_client_singleton_a1451bb2ca1a526a3864530d735f957c2} 
+void Tcp\+Client\+Singleton::\+send\+Message (\begin{DoxyParamCaption}\item[{const QString \&}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Отправляет сообщение на сервер. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Строка сообщения.\\
+\hline
+\end{DoxyParams}
+Сообщение отправляется только если есть активное подключение.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Строка сообщения для отправки. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+Tcp\+Client/\+\doxymbox{\hyperlink{tcpclientsingleton_8h}{tcpclientsingleton.\+h}}\item 
+Tcp\+Client/\+\doxymbox{\hyperlink{tcpclientsingleton_8cpp}{tcpclientsingleton.\+cpp}}\end{DoxyCompactItemize}

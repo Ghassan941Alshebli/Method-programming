@@ -23,18 +23,19 @@
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var menudata={children:[
-{text:"Титульная страница",url:"index.html"},
-{text:"Классы",url:"annotated.html",children:[
-{text:"Классы",url:"annotated.html"},
-{text:"Алфавитный указатель классов",url:"classes.html"},
-{text:"Члены классов",url:"functions.html",children:[
-{text:"Указатель",url:"functions.html"},
-{text:"Функции",url:"functions_func.html"},
-{text:"Переменные",url:"functions_vars.html"}]}]},
-{text:"Файлы",url:"files.html",children:[
-{text:"Файлы",url:"files.html"},
-{text:"Список членов всех файлов",url:"globals.html",children:[
-{text:"Указатель",url:"globals.html",children:[
+{text:"Main Page",url:"index.html"},
+{text:"Classes",url:"annotated.html",children:[
+{text:"Class List",url:"annotated.html"},
+{text:"Class Index",url:"classes.html"},
+{text:"Class Hierarchy",url:"hierarchy.html"},
+{text:"Class Members",url:"functions.html",children:[
+{text:"All",url:"functions.html"},
+{text:"Functions",url:"functions_func.html"},
+{text:"Variables",url:"functions_vars.html"}]}]},
+{text:"Files",url:"files.html",children:[
+{text:"File List",url:"files.html"},
+{text:"File Members",url:"globals.html",children:[
+{text:"All",url:"globals.html",children:[
 {text:"c",url:"globals.html#index_c"},
 {text:"d",url:"globals.html#index_d"},
 {text:"f",url:"globals.html#index_f"},
@@ -48,7 +49,7 @@ var menudata={children:[
 {text:"r",url:"globals.html#index_r"},
 {text:"s",url:"globals.html#index_s"},
 {text:"v",url:"globals.html#index_v"}]},
-{text:"Функции",url:"globals_func.html",children:[
+{text:"Functions",url:"globals_func.html",children:[
 {text:"d",url:"globals_func.html#index_d"},
 {text:"f",url:"globals_func.html#index_f"},
 {text:"g",url:"globals_func.html#index_g"},
@@ -60,4 +61,4 @@ var menudata={children:[
 {text:"r",url:"globals_func.html#index_r"},
 {text:"s",url:"globals_func.html#index_s"},
 {text:"v",url:"globals_func.html#index_v"}]},
-{text:"Переменные",url:"globals_vars.html"}]}]}]}
+{text:"Variables",url:"globals_vars.html"}]}]}]}

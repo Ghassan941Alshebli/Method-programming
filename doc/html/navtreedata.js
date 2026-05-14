@@ -24,28 +24,29 @@
 */
 var NAVTREE =
 [
-  [ "Method programming", "index.html", [
+  [ "Method-programming", "index.html", [
     [ "Проект по методам программирования", "index.html#autotoc_md0", [
       [ "Структура проекта", "index.html#autotoc_md1", null ],
       [ "Используемые технологии", "index.html#autotoc_md2", null ],
       [ "Возможности", "index.html#autotoc_md3", null ],
       [ "Участники (учебная группа: 251-352)", "index.html#autotoc_md4", null ]
     ] ],
-    [ "Классы", "annotated.html", [
-      [ "Классы", "annotated.html", "annotated_dup" ],
-      [ "Алфавитный указатель классов", "classes.html", null ],
-      [ "Члены классов", "functions.html", [
-        [ "Указатель", "functions.html", null ],
-        [ "Функции", "functions_func.html", null ],
-        [ "Переменные", "functions_vars.html", null ]
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
-    [ "Файлы", "files.html", [
-      [ "Файлы", "files.html", "files_dup" ],
-      [ "Список членов всех файлов", "globals.html", [
-        [ "Указатель", "globals.html", null ],
-        [ "Функции", "globals_func.html", null ],
-        [ "Переменные", "globals_vars.html", null ]
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ]
       ] ]
     ] ]
   ] ]
@@ -56,6 +57,6 @@ var NAVTREEINDEX =
 "_databases_8cpp.html"
 ];
 
-const SYNCONMSG = 'нажмите на выключить для синхронизации панелей';
-const SYNCOFFMSG = 'нажмите на включить для синхронизации панелей';
-const LISTOFALLMEMBERS = 'Полный список членов класса';
+const SYNCONMSG = 'click to disable panel synchronization';
+const SYNCOFFMSG = 'click to enable panel synchronization';
+const LISTOFALLMEMBERS = 'List of all members';

@@ -1,4 +1,4 @@
-\doxysection{Файл Tcp\+Server/\+main.cpp}
+\doxysection{Tcp\+Server/\+main.cpp File Reference}
 \hypertarget{_tcp_server_2main_8cpp}{}\label{_tcp_server_2main_8cpp}\index{TcpServer/main.cpp@{TcpServer/main.cpp}}
 
 
@@ -15,35 +15,37 @@
 {\ttfamily \+\#include "{}../\+\+Algorithms/\+secant.\+h"{}}\newline
 {\ttfamily \+\#include "{}../\+\+Algorithms/\+graph.\+h"{}}\newline
 {\ttfamily \+\#include "{}../\+\+Database/\+database.\+h"{}}\newline
-\doxysubsubsection*{Классы}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \doxymbox{\hyperlink{struct_client_info}{Client\+Info}}
 \begin{DoxyCompactList}\small\item\em Хранит информацию об аутентифицированном клиенте. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Функции}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 QString \doxymbox{\hyperlink{_tcp_server_2main_8cpp_a3ee8f5d36c97afc1e083b36aa2b2ab6f}{handle\+Request}} (const QString \&request)
 \begin{DoxyCompactList}\small\item\em Разбирает и выполняет запрос клиента. \end{DoxyCompactList}\item 
 int \doxymbox{\hyperlink{_tcp_server_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\+[$\,$]\+)
 \begin{DoxyCompactList}\small\item\em Точка входа приложения. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Переменные}
+\doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-QMap$<$ QTcp\+Socket \texorpdfstring{$\ast$}{*}, \doxymbox{\hyperlink{struct_client_info}{Client\+Info}} $>$ \doxymbox{\hyperlink{_tcp_server_2main_8cpp_ac36935d422c1f9c1d31a11d60d36de61}{clients}}
+\Hypertarget{_tcp_server_2main_8cpp_ac36935d422c1f9c1d31a11d60d36de61}\label{_tcp_server_2main_8cpp_ac36935d422c1f9c1d31a11d60d36de61} 
+QMap$<$ QTcp\+Socket \texorpdfstring{$\ast$}{*}, \doxymbox{\hyperlink{struct_client_info}{Client\+Info}} $>$ {\bfseries clients}
 \begin{DoxyCompactList}\small\item\em Таблица активных подключений:\+ сокет → данные клиента. \end{DoxyCompactList}\item 
-int \doxymbox{\hyperlink{_tcp_server_2main_8cpp_ab80ecec132da8206c699e244ff626548}{next\+Client\+Id}} = 1
+\Hypertarget{_tcp_server_2main_8cpp_ab80ecec132da8206c699e244ff626548}\label{_tcp_server_2main_8cpp_ab80ecec132da8206c699e244ff626548} 
+int {\bfseries next\+Client\+Id} = 1
 \begin{DoxyCompactList}\small\item\em Счётчик для назначения уникальных ID клиентам. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Подробное описание}
+\doxysubsection{Detailed Description}
 Точка входа TCP-\/сервера на базе Qt. 
 
 Сервер принимает подключения клиентов, обрабатывает запросы через текстовый протокол с разделителем \textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{} и делегирует выполнение модулям:\+ \doxylink{class_database}{Database}, Algorithms (MD5, Vigenere, Secant, Graph). 
 
 \label{_tcp_server_2main_8cpp_doc-func-members}
 \Hypertarget{_tcp_server_2main_8cpp_doc-func-members}
-\doxysubsection{Функции}
+\doxysubsection{Function Documentation}
 \Hypertarget{_tcp_server_2main_8cpp_a3ee8f5d36c97afc1e083b36aa2b2ab6f}\index{main.cpp@{main.cpp}!handleRequest@{handleRequest}}
 \index{handleRequest@{handleRequest}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{handleRequest()}{handleRequest()}}
@@ -65,11 +67,11 @@ QString handle\+Request (\begin{DoxyParamCaption}\item[{const QString \&}]{reque
 \end{DoxyItemize}
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em request} & Строка запроса от клиента. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Строка ответа для отправки клиенту. 
 \end{DoxyReturn}
 \Hypertarget{_tcp_server_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{main.cpp@{main.cpp}!main@{main}}
@@ -85,37 +87,12 @@ int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstr
 Инициализирует базу данных, запускает TCP-\/сервер на порту 12345 и настраивает обработчики событий подключения, получения данных и отключения клиентов.
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em argc} & Количество аргументов командной строки. \\
 \hline
 {\em argv} & Массив аргументов командной строки. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Код завершения приложения Qt. 
 \end{DoxyReturn}
-
-
-\label{_tcp_server_2main_8cpp_doc-var-members}
-\Hypertarget{_tcp_server_2main_8cpp_doc-var-members}
-\doxysubsection{Переменные}
-\Hypertarget{_tcp_server_2main_8cpp_ac36935d422c1f9c1d31a11d60d36de61}\index{main.cpp@{main.cpp}!clients@{clients}}
-\index{clients@{clients}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{clients}{clients}}
-{\footnotesize\ttfamily \label{_tcp_server_2main_8cpp_ac36935d422c1f9c1d31a11d60d36de61} 
-QMap$<$QTcp\+Socket\texorpdfstring{$\ast$}{*}, \doxymbox{\hyperlink{struct_client_info}{Client\+Info}}$>$ clients}
-
-
-
-Таблица активных подключений:\+ сокет → данные клиента. 
-
-\Hypertarget{_tcp_server_2main_8cpp_ab80ecec132da8206c699e244ff626548}\index{main.cpp@{main.cpp}!nextClientId@{nextClientId}}
-\index{nextClientId@{nextClientId}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{nextClientId}{nextClientId}}
-{\footnotesize\ttfamily \label{_tcp_server_2main_8cpp_ab80ecec132da8206c699e244ff626548} 
-int next\+Client\+Id = 1}
-
-
-
-Счётчик для назначения уникальных ID клиентам. 
-

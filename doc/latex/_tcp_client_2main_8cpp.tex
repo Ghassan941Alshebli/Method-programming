@@ -1,29 +1,31 @@
-\doxysection{Файл Tcp\+Client/\+main.cpp}
+\doxysection{Tcp\+Client/\+main.cpp File Reference}
 \hypertarget{_tcp_client_2main_8cpp}{}\label{_tcp_client_2main_8cpp}\index{TcpClient/main.cpp@{TcpClient/main.cpp}}
 
 
-Точка входа TCP-\/клиента с консольным интерфейсом.  
+Точка входа графического TCP-\/клиента.  
 
 
-{\ttfamily \+\#include $<$QCore\+Application$>$}\newline
-{\ttfamily \+\#include $<$QTcp\+Socket$>$}\newline
-{\ttfamily \+\#include $<$iostream$>$}\newline
-{\ttfamily \+\#include $<$string$>$}\newline
-\doxysubsubsection*{Функции}
+{\ttfamily \+\#include $<$QApplication$>$}\newline
+{\ttfamily \+\#include "{}mainwindow.\+h"{}}\newline
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 int \doxymbox{\hyperlink{_tcp_client_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\+[$\,$]\+)
-\begin{DoxyCompactList}\small\item\em Точка входа клиентского приложения. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Точка входа приложения. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Подробное описание}
-Точка входа TCP-\/клиента с консольным интерфейсом. 
+\doxysubsection{Detailed Description}
+Точка входа графического TCP-\/клиента. 
+
+Точка входа TCP-\/клиента с консольным интерфейсом.
+
+Инициализирует Qt-\/приложение с графическим интерфейсом и запускает главное окно.
 
 Клиент подключается к серверу на 127.\+0.\+0.\+1:\+12345, выполняет аутентификацию (регистрацию или вход), затем позволяет отправлять запросы к алгоритмам:\+ MD5, Vigenere, Secant, Graph. 
 
 \label{_tcp_client_2main_8cpp_doc-func-members}
 \Hypertarget{_tcp_client_2main_8cpp_doc-func-members}
-\doxysubsection{Функции}
+\doxysubsection{Function Documentation}
 \Hypertarget{_tcp_client_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{main.cpp@{main.cpp}!main@{main}}
 \index{main@{main}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
@@ -32,17 +34,15 @@ int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstr
 
 
 
-Точка входа клиентского приложения. 
-
-Устанавливает соединение с сервером, проводит этап аутентификации, после чего в цикле принимает команды пользователя и отправляет запросы на сервер.
+Точка входа приложения. 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em argc} & Количество аргументов командной строки. \\
 \hline
 {\em argv} & Массив аргументов командной строки. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Код завершения приложения. 
 \end{DoxyReturn}

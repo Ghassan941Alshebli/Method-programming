@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['возможности_0',['Возможности',['../index.html#autotoc_md3',1,'']]]
+  ['username_0',['username',['../struct_client_info.html#a01972550359500d11cf7c1e0828927c3',1,'ClientInfo']]]
 ];

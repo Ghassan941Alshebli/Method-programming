@@ -1,4 +1,4 @@
-\doxysection{Файл Database/\+database.cpp}
+\doxysection{Database/\+database.cpp File Reference}
 \hypertarget{database_8cpp}{}\label{database_8cpp}\index{Database/database.cpp@{Database/database.cpp}}
 
 
@@ -10,7 +10,7 @@
 {\ttfamily \+\#include $<$QSql\+Query$>$}\newline
 {\ttfamily \+\#include $<$QSql\+Error$>$}\newline
 {\ttfamily \+\#include $<$QDebug$>$}\newline
-\doxysubsubsection*{Функции}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 bool \doxymbox{\hyperlink{database_8cpp_a08ea2af0dce01d14ef75e4c298fa2970}{init\+Database}} ()
@@ -23,14 +23,14 @@ QString \doxymbox{\hyperlink{database_8cpp_ab0329dff6ed4115feb4f4022a24fa803}{ge
 \begin{DoxyCompactList}\small\item\em Возвращает имя пользователя по его адресу электронной почты. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Подробное описание}
+\doxysubsection{Detailed Description}
 Реализация функций управления базой данных пользователей. 
 
 Использует Qt SQL с бэкендом SQLite для хранения и получения данных пользователей:\+ регистрации, аутентификации и поиска. 
 
 \label{database_8cpp_doc-func-members}
 \Hypertarget{database_8cpp_doc-func-members}
-\doxysubsection{Функции}
+\doxysubsection{Function Documentation}
 \Hypertarget{database_8cpp_ab0329dff6ed4115feb4f4022a24fa803}\index{database.cpp@{database.cpp}!getUsernameByEmail@{getUsernameByEmail}}
 \index{getUsernameByEmail@{getUsernameByEmail}!database.cpp@{database.cpp}}
 \doxysubsubsection{\texorpdfstring{getUsernameByEmail()}{getUsernameByEmail()}}
@@ -46,21 +46,21 @@ QString get\+Username\+By\+Email (\begin{DoxyParamCaption}\item[{const QString \
 Выполняет поиск в таблице {\ttfamily users} по полю email и возвращает соответствующее имя пользователя.
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em email} & Адрес электронной почты для поиска. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Имя пользователя в виде строки, или пустая строка если не найдено.
 \end{DoxyReturn}
 Возвращает имя пользователя по его адресу электронной почты.
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em email} & Адрес электронной почты для поиска. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Имя пользователя, если найдено; пустая строка — если не существует. 
 \end{DoxyReturn}
 \Hypertarget{database_8cpp_a08ea2af0dce01d14ef75e4c298fa2970}\index{database.cpp@{database.cpp}!initDatabase@{initDatabase}}
@@ -77,12 +77,12 @@ bool init\+Database (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 Открывает файл базы данных {\ttfamily users.\+db}. Если таблица {\ttfamily users} не существует, создаёт её со следующими полями:\+ id, username, email, password.
 
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если инициализация прошла успешно, false — в случае ошибки подключения или создания таблицы.
 \end{DoxyReturn}
 Инициализирует базу данных SQLite и создаёт таблицу пользователей.
 
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если подключение и создание таблицы прошли успешно, false — в случае ошибки. 
 \end{DoxyReturn}
 \Hypertarget{database_8cpp_a2e14f8274045b91804efa4a4e6c46a12}\index{database.cpp@{database.cpp}!loginUser@{loginUser}}
@@ -100,25 +100,25 @@ bool login\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{email}{, }\i
 Выполняет запрос к таблице {\ttfamily users}, сопоставляя email и пароль.
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em email} & Адрес электронной почты пользователя. \\
 \hline
 {\em password} & Пароль пользователя. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если найдена соответствующая запись, false — в случае ошибки или несовпадения.
 \end{DoxyReturn}
 Проверяет учётные данные пользователя для входа в систему.
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em email} & Адрес электронной почты пользователя. \\
 \hline
 {\em password} & Пароль пользователя. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если учётные данные верны, false — в случае ошибки. 
 \end{DoxyReturn}
 \Hypertarget{database_8cpp_ae48e3d223ab7011cc4eae4411c780119}\index{database.cpp@{database.cpp}!registerUser@{registerUser}}
@@ -136,7 +136,7 @@ bool register\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{username}
 Сначала проверяет, существует ли уже пользователь с таким email. Если нет — вставляет новую запись в таблицу {\ttfamily users}.
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em username} & Имя пользователя. \\
 \hline
 {\em email} & Уникальный адрес электронной почты. \\
@@ -144,13 +144,13 @@ bool register\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{username}
 {\em password} & Пароль пользователя. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если пользователь успешно зарегистрирован, false — если email занят или произошла ошибка.
 \end{DoxyReturn}
 Регистрирует нового пользователя, если email ещё не занят.
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em username} & Имя пользователя. \\
 \hline
 {\em email} & Уникальный адрес электронной почты пользователя. \\
@@ -158,6 +158,6 @@ true — если пользователь успешно зарегистрир
 {\em password} & Пароль пользователя. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 true — если регистрация прошла успешно, false — если email уже существует или произошла ошибка. 
 \end{DoxyReturn}

@@ -1,4 +1,4 @@
-\doxysection{Файл Server/\+\+Server.cpp}
+\doxysection{Server/\+\+Server.cpp File Reference}
 \hypertarget{_server_8cpp}{}\label{_server_8cpp}\index{Server/Server.cpp@{Server/Server.cpp}}
 
 
@@ -8,18 +8,22 @@
 {\ttfamily \+\#include $<$iostream$>$}\newline
 {\ttfamily \+\#include $<$sstream$>$}\newline
 {\ttfamily \+\#include $<$vector$>$}\newline
-\doxysubsubsection*{Функции}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 vector$<$ string $>$ \doxymbox{\hyperlink{_server_8cpp_ab2152a3adf2fbd7315536b5e5e77e286}{split}} (const string \&str, char delimiter)
 \begin{DoxyCompactList}\small\item\em Разбивает строку по разделителю на вектор подстрок. \end{DoxyCompactList}\item 
-string \doxymbox{\hyperlink{_server_8cpp_ab5995732fd9af2a0aee49d64bc314e5c}{vigenere}} (const string \&text, const string \&key)
+\Hypertarget{_server_8cpp_ab5995732fd9af2a0aee49d64bc314e5c}\label{_server_8cpp_ab5995732fd9af2a0aee49d64bc314e5c} 
+string {\bfseries vigenere} (const string \&text, const string \&key)
 \begin{DoxyCompactList}\small\item\em Заглушка шифрования Виженера. \end{DoxyCompactList}\item 
-string \doxymbox{\hyperlink{_server_8cpp_a6b25161f3e4ada3cf622617b7ba8912c}{md5}} (const string \&text)
+\Hypertarget{_server_8cpp_a6b25161f3e4ada3cf622617b7ba8912c}\label{_server_8cpp_a6b25161f3e4ada3cf622617b7ba8912c} 
+string {\bfseries md5} (const string \&text)
 \begin{DoxyCompactList}\small\item\em Заглушка генерации MD5-\/хэша. \end{DoxyCompactList}\item 
-string \doxymbox{\hyperlink{_server_8cpp_a933186a1bf5202d0d9733c72abd24ef0}{secant}} (const string \&f, const string \&x0, const string \&x1)
+\Hypertarget{_server_8cpp_a933186a1bf5202d0d9733c72abd24ef0}\label{_server_8cpp_a933186a1bf5202d0d9733c72abd24ef0} 
+string {\bfseries secant} (const string \&f, const string \&x0, const string \&x1)
 \begin{DoxyCompactList}\small\item\em Заглушка метода секущих. \end{DoxyCompactList}\item 
-string \doxymbox{\hyperlink{_server_8cpp_affffa3801e79901b258e0f989870efed}{graph\+Cycle}} (const string \&data)
+\Hypertarget{_server_8cpp_affffa3801e79901b258e0f989870efed}\label{_server_8cpp_affffa3801e79901b258e0f989870efed} 
+string {\bfseries graph\+Cycle} (const string \&data)
 \begin{DoxyCompactList}\small\item\em Заглушка обнаружения циклов в графе. \end{DoxyCompactList}\item 
 string \doxymbox{\hyperlink{_server_8cpp_a13ef2913af65c07f44f2712ecc6120a1}{parse\+Input}} (const string \&request)
 \begin{DoxyCompactList}\small\item\em Разбирает строку запроса и вызывает соответствующую функцию. \end{DoxyCompactList}\item 
@@ -27,24 +31,14 @@ int \doxymbox{\hyperlink{_server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} 
 \begin{DoxyCompactList}\small\item\em Точка входа тестовой программы парсера команд. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Подробное описание}
+\doxysubsection{Detailed Description}
 Прототип парсера команд сервера с заглушками алгоритмов. 
 
 Самая ранняя реализация:\+ только парсинг протокола и заглушки. Используется для тестирования формата команд до реализации алгоритмов. 
 
 \label{_server_8cpp_doc-func-members}
 \Hypertarget{_server_8cpp_doc-func-members}
-\doxysubsection{Функции}
-\Hypertarget{_server_8cpp_affffa3801e79901b258e0f989870efed}\index{Server.cpp@{Server.cpp}!graphCycle@{graphCycle}}
-\index{graphCycle@{graphCycle}!Server.cpp@{Server.cpp}}
-\doxysubsubsection{\texorpdfstring{graphCycle()}{graphCycle()}}
-{\footnotesize\ttfamily \label{_server_8cpp_affffa3801e79901b258e0f989870efed} 
-string graph\+Cycle (\begin{DoxyParamCaption}\item[{const string \&}]{data}{}\end{DoxyParamCaption})}
-
-
-
-Заглушка обнаружения циклов в графе. 
-
+\doxysubsection{Function Documentation}
 \Hypertarget{_server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{Server.cpp@{Server.cpp}!main@{main}}
 \index{main@{main}!Server.cpp@{Server.cpp}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
@@ -55,17 +49,7 @@ int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 Точка входа тестовой программы парсера команд. 
 
-Запускает несколько тестовых запросов и выводит результаты. \Hypertarget{_server_8cpp_a6b25161f3e4ada3cf622617b7ba8912c}\index{Server.cpp@{Server.cpp}!md5@{md5}}
-\index{md5@{md5}!Server.cpp@{Server.cpp}}
-\doxysubsubsection{\texorpdfstring{md5()}{md5()}}
-{\footnotesize\ttfamily \label{_server_8cpp_a6b25161f3e4ada3cf622617b7ba8912c} 
-string md5 (\begin{DoxyParamCaption}\item[{const string \&}]{text}{}\end{DoxyParamCaption})}
-
-
-
-Заглушка генерации MD5-\/хэша. 
-
-\Hypertarget{_server_8cpp_a13ef2913af65c07f44f2712ecc6120a1}\index{Server.cpp@{Server.cpp}!parseInput@{parseInput}}
+Запускает несколько тестовых запросов и выводит результаты. \Hypertarget{_server_8cpp_a13ef2913af65c07f44f2712ecc6120a1}\index{Server.cpp@{Server.cpp}!parseInput@{parseInput}}
 \index{parseInput@{parseInput}!Server.cpp@{Server.cpp}}
 \doxysubsubsection{\texorpdfstring{parseInput()}{parseInput()}}
 {\footnotesize\ttfamily \label{_server_8cpp_a13ef2913af65c07f44f2712ecc6120a1} 
@@ -84,23 +68,13 @@ string parse\+Input (\begin{DoxyParamCaption}\item[{const string \&}]{request}{}
 \end{DoxyItemize}
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em request} & Входная строка запроса. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Строка ответа от соответствующей функции. 
 \end{DoxyReturn}
-\Hypertarget{_server_8cpp_a933186a1bf5202d0d9733c72abd24ef0}\index{Server.cpp@{Server.cpp}!secant@{secant}}
-\index{secant@{secant}!Server.cpp@{Server.cpp}}
-\doxysubsubsection{\texorpdfstring{secant()}{secant()}}
-{\footnotesize\ttfamily \label{_server_8cpp_a933186a1bf5202d0d9733c72abd24ef0} 
-string secant (\begin{DoxyParamCaption}\item[{const string \&}]{f}{, }\item[{const string \&}]{x0}{, }\item[{const string \&}]{x1}{}\end{DoxyParamCaption})}
-
-
-
-Заглушка метода секущих. 
-
 \Hypertarget{_server_8cpp_ab2152a3adf2fbd7315536b5e5e77e286}\index{Server.cpp@{Server.cpp}!split@{split}}
 \index{split@{split}!Server.cpp@{Server.cpp}}
 \doxysubsubsection{\texorpdfstring{split()}{split()}}
@@ -112,22 +86,12 @@ vector$<$ string $>$ split (\begin{DoxyParamCaption}\item[{const string \&}]{str
 Разбивает строку по разделителю на вектор подстрок. 
 
 
-\begin{DoxyParams}{Аргументы}
+\begin{DoxyParams}{Parameters}
 {\em str} & Входная строка. \\
 \hline
 {\em delimiter} & Символ-\/разделитель. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
+\begin{DoxyReturn}{Returns}
 Вектор подстрок. 
 \end{DoxyReturn}
-\Hypertarget{_server_8cpp_ab5995732fd9af2a0aee49d64bc314e5c}\index{Server.cpp@{Server.cpp}!vigenere@{vigenere}}
-\index{vigenere@{vigenere}!Server.cpp@{Server.cpp}}
-\doxysubsubsection{\texorpdfstring{vigenere()}{vigenere()}}
-{\footnotesize\ttfamily \label{_server_8cpp_ab5995732fd9af2a0aee49d64bc314e5c} 
-string vigenere (\begin{DoxyParamCaption}\item[{const string \&}]{text}{, }\item[{const string \&}]{key}{}\end{DoxyParamCaption})}
-
-
-
-Заглушка шифрования Виженера. 
-
