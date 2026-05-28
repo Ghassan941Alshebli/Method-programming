@@ -8,6 +8,8 @@
 #include <QTextEdit>
 #include <QLabel>
 #include <QComboBox>
+#include <QTableWidget>
+#include <QHeaderView>
 #include "tcpclientsingleton.h"
 
 /**
@@ -54,6 +56,12 @@ private slots:
     /** @brief Обрабатывает отключение от сервера. */
     void onDisconnected();
 
+    /** @brief Получает список пользователей. */
+    void onGetUsersClicked(); 
+    
+    /** @brief Исключает выбранного пользователя. */
+    void onKickUserClicked(); 
+
 private:
     /** @brief Создаёт страницу аутентификации. */
     void setupLoginPage();
@@ -66,6 +74,15 @@ private:
 
     /** @brief Показывает основную страницу. */
     void showMainPage();
+
+    /** @brief Отправляет команду администратора. */
+    void sendAdminCommand(const QString& cmd); 
+
+    /** @brief Отображает таблицу пользователей. */
+    void displayUserTable(const QString& data); 
+
+    /** @brief Возвращает метку роли пользователя. */
+    QString getRoleLabel(const QString& role); 
 
     /**
      * @brief Отправляет сообщение на сервер.
@@ -87,7 +104,12 @@ private:
     QLabel* input1Label;         ///< Метка первого поля ввода.
     QLabel* input2Label;         ///< Метка второго поля ввода.
     QTextEdit* responseEdit;     ///< Область вывода ответов сервера.
+    QTableWidget* usersTable;    ///< Отображение списка пользователей по таблице.
     QLabel* welcomeLabel;        ///< Метка приветствия пользователя.
+   
+    QString currentUser;         ///< Введённое имя пользователя.
+    QString currentRole;         ///< Роль пользователя (ADMIN/USER).
+    QLabel* roleLabel;           ///< Метка отображения роли.
 };
 
 #endif

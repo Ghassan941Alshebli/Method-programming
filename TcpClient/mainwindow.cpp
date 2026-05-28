@@ -11,6 +11,9 @@
 #include <QPushButton>
 #include <QGroupBox>
 #include <QMessageBox>
+#include <QTableWidget>
+#include <QHeaderView>
+#include <QStringList>
 
  /**
   * @brief Конструктор — инициализирует окно, сокет и страницы интерфейса.
@@ -95,10 +98,21 @@ void MainWindow::setupMainPage()
     layout->setSpacing(12);
     layout->setContentsMargins(20, 20, 20, 20);
 
-    welcomeLabel = new QLabel("Welcome!");
+    // --- 1. ВЕРХНЯЯ ЧАСТЬ (Приветствие и роль пользователя) ---
+    QHBoxLayout* headerLayout = new QHBoxLayout();
+    
+    welcomeLabel = new QLabel("Добро пожаловать!");
     welcomeLabel->setStyleSheet("font-size: 16px; font-weight: bold;");
+    
+    roleLabel = new QLabel("Роль: Ожидание..."); // Отображение роли (находится в mainwindow.h)
+    roleLabel->setStyleSheet("font-size: 14px; color: #d35400; font-weight: bold;");
+    roleLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+    
+    headerLayout->addWidget(welcomeLabel);
+    headerLayout->addWidget(roleLabel);
 
-    QGroupBox* requestGroup = new QGroupBox("Request");
+    // --- 2. СРЕДНЯЯ ЧАСТЬ (Основная секция запроса) ---
+    QGroupBox* requestGroup = new QGroupBox("Запрос");
     QGridLayout* grid = new QGridLayout(requestGroup);
 
     requestTypeCombo = new QComboBox();
@@ -106,20 +120,20 @@ void MainWindow::setupMainPage()
     connect(requestTypeCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
         this, &MainWindow::onRequestTypeChanged);
 
-    input1Label = new QLabel("Text:");
+    input1Label = new QLabel("Текст:");
     input1Edit = new QLineEdit();
-    input1Edit->setPlaceholderText("Enter text...");
+    input1Edit->setPlaceholderText("Введите текст...");
 
-    input2Label = new QLabel("Key:");
+    input2Label = new QLabel("Ключ:");
     input2Edit = new QLineEdit();
-    input2Edit->setPlaceholderText("Enter key...");
+    input2Edit->setPlaceholderText("Введите ключ...");
     input2Label->hide();
     input2Edit->hide();
 
-    QPushButton* sendBtn = new QPushButton("Send");
+    QPushButton* sendBtn = new QPushButton("Отправить");
     connect(sendBtn, &QPushButton::clicked, this, &MainWindow::onSendClicked);
 
-    grid->addWidget(new QLabel("Algorithm:"), 0, 0);
+    grid->addWidget(new QLabel("Алгоритм:"), 0, 0);
     grid->addWidget(requestTypeCombo, 0, 1);
     grid->addWidget(input1Label, 1, 0);
     grid->addWidget(input1Edit, 1, 1);
@@ -127,14 +141,35 @@ void MainWindow::setupMainPage()
     grid->addWidget(input2Edit, 2, 1);
     grid->addWidget(sendBtn, 3, 1);
 
+    // --- 3. НОВАЯ СЕКЦИЯ (Кнопки администратора и таблица) ---
+    QPushButton* btnGetUsers = new QPushButton("Показать всех пользователей (Админ)");
+    QPushButton* btnKickUser = new QPushButton("Удалить пользователя (Админ)");
+    
+    // Подключение действий кнопок к ранее созданным функциям
+    connect(btnGetUsers, &QPushButton::clicked, this, &MainWindow::onGetUsersClicked);
+    connect(btnKickUser, &QPushButton::clicked, this, &MainWindow::onKickUserClicked);
+
+    QHBoxLayout* adminBtnLayout = new QHBoxLayout();
+    adminBtnLayout->addWidget(btnGetUsers);
+    adminBtnLayout->addWidget(btnKickUser);
+
+    usersTable = new QTableWidget(); // Создание таблицы
+    usersTable->hide(); // При входе таблица изначально скрыта
+
+    // --- 4. НИЖНЯЯ ЧАСТЬ (Окно вывода ответов сервера) ---
     responseEdit = new QTextEdit();
     responseEdit->setReadOnly(true);
-    responseEdit->setPlaceholderText("Server responses will appear here...");
+    responseEdit->setPlaceholderText("Здесь будут отображаться ответы сервера...");
 
-    layout->addWidget(welcomeLabel);
-    layout->addWidget(requestGroup);
-    layout->addWidget(new QLabel("Server responses:"));
-    layout->addWidget(responseEdit);
+    // --- 5. СБОРКА ВСЕХ КОМПОНЕНТОВ В ГЛАВНЫЙ МАКЕТ (LAYOUT) ---
+    layout->addLayout(headerLayout);       // Верхнее приветствие
+    layout->addWidget(requestGroup);       // Секция отправки алгоритма
+    
+    layout->addLayout(adminBtnLayout);     // Две кнопки администратора
+    layout->addWidget(usersTable);         // Таблица с данными пользователей
+    
+    layout->addWidget(new QLabel("Ответы сервера:"));
+    layout->addWidget(responseEdit);       // Текстовое поле для ответов
 
     stackedWidget->addWidget(page);
 }
@@ -251,23 +286,56 @@ void MainWindow::onRequestTypeChanged(int index)
 }
 
 /** @brief Обрабатывает входящие данные от сервера. */
+/** @brief Обрабатывает входящие данные от сервера. */
+/** @brief Обрабатывает входящие данные от сервера. */
 void MainWindow::onReadyRead()
 {
     QString response = QString::fromUtf8(client->getSocket()->readAll()).trimmed();
 
+    // 1. Если находимся на странице авторизации (Login) (currentIndex == 0)
     if (stackedWidget->currentIndex() == 0) {
-        if (response == "Login successful") {
+        
+        // От сервера приходит ответ вида "Login successful|ADMIN" или "Login successful|USER"
+        if (response.startsWith("Login successful")) {
+            
+            // Разделение прав доступа (ролей)
+            QStringList parts = response.split("|");
+            if (parts.size() >= 2) {
+                currentRole = parts[1]; // Сохраняем "ADMIN" или "USER"
+                
+                // Выводим роль в roleLabel (используя функцию getRoleLabel)
+                if(roleLabel) {
+                    roleLabel->setText("Роль: " + getRoleLabel(currentRole));
+                }
+            } else {
+                // Если сервер по старинке прислал только "Login successful",
+                // то по умолчанию считаем пользователя обычным юзером
+                currentRole = "USER";
+                if(roleLabel) {
+                    roleLabel->setText("Роль: " + getRoleLabel(currentRole));
+                }
+            }
+
             QString username = usernameEdit->text().trimmed();
-            welcomeLabel->setText("Welcome, " + username + "!");
+            welcomeLabel->setText("Добро пожаловать, " + username + "!");
             showMainPage();
-        }
+        } 
         else {
             authStatusLabel->setStyleSheet("color: red;");
             authStatusLabel->setText(response);
         }
-    }
+    } 
+    // 2. Если находимся на главной странице (после успешного входа)
     else {
-        responseEdit->append("> " + response);
+        // Когда от сервера приходит список пользователей
+        if (response.startsWith("USERS_DATA|")) {
+            QString tableData = response.mid(11); // Отрезаем префикс "USERS_DATA|"
+            displayUserTable(tableData);
+        }
+        // Когда приходят ответы от обычных алгоритмов
+        else {
+            responseEdit->append("> " + response);
+        }
     }
 }
 
@@ -276,4 +344,91 @@ void MainWindow::onDisconnected()
 {
     QMessageBox::warning(this, "Disconnected", "Connection to server lost.");
     showLoginPage();
+}
+// --- ФУНКЦИИ ДЛЯ РОЛЕЙ АДМИНИСТРАТОРА И ПОЛЬЗОВАТЕЛЯ ---
+
+QString MainWindow::getRoleLabel(const QString& role) {
+    // Возвращает текстовое описание роли пользователя
+    if (role == "ADMIN") 
+        return "Администратор (Полный доступ)";
+    
+    return "Обычный пользователь";
+}
+
+void MainWindow::sendAdminCommand(const QString& cmd) {
+    // Проверяет, является ли текущий пользователь администратором
+    if (currentRole != "ADMIN") {
+        if(responseEdit) {
+            responseEdit->append("Ошибка: У вас нет прав администратора!");
+        }
+        return;
+    }
+
+    // Отправляет команду серверу
+    sendToServer(cmd);
+}
+
+void MainWindow::onGetUsersClicked() {
+    // Запрашивает у сервера список всех пользователей
+    sendAdminCommand("GET_USERS_LIST");
+}
+
+void MainWindow::onKickUserClicked() {
+    // Проверяет существование таблицы пользователей
+    if (!usersTable) return;
+    
+    // Получает индекс выбранной строки
+    int currentRow = usersTable->currentRow();
+
+    if (currentRow >= 0) {
+        // Получает ID выбранного пользователя из первой колонки таблицы
+        QString userId = usersTable->item(currentRow, 0)->text();
+
+        // Отправляет серверу команду на удаление пользователя
+        sendAdminCommand("KICK_USER|" + userId);
+    } else {
+        if(responseEdit) {
+            responseEdit->append("Выберите пользователя из таблицы для удаления.");
+        }
+    }
+}
+
+void MainWindow::displayUserTable(const QString& data) {
+    // Проверяет существование таблицы
+    if (!usersTable) return;
+    
+    // Очищает предыдущее содержимое таблицы
+    usersTable->clearContents();
+    
+    // Ожидаемый формат данных от сервера:
+    // "ID,Name,Role;ID,Name,Role;"
+    QStringList rows = data.split(";", Qt::SkipEmptyParts);
+
+    // Устанавливает количество строк и колонок
+    usersTable->setRowCount(rows.size());
+    usersTable->setColumnCount(3);
+    
+    // Устанавливает заголовки колонок
+    usersTable->setHorizontalHeaderLabels({
+        "ID",
+        "Имя пользователя",
+        "Роль"
+    });
+
+    // Заполняет таблицу данными
+    for (int i = 0; i < rows.size(); ++i) {
+        QStringList columns = rows[i].split(",");
+
+        if (columns.size() >= 3) {
+            usersTable->setItem(i, 0, new QTableWidgetItem(columns[0]));
+            usersTable->setItem(i, 1, new QTableWidgetItem(columns[1]));
+            usersTable->setItem(i, 2, new QTableWidgetItem(columns[2]));
+        }
+    }
+    
+    // Растягивает колонки по ширине окна
+    usersTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    // Показывает таблицу
+    usersTable->show();
 }
